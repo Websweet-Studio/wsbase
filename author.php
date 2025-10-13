@@ -18,10 +18,10 @@ $container = get_theme_mod( 'wsbase_container_type' );
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-		<div class="row">
+		<div class="row justify-content-center">
 
-			<!-- Do the left sidebar check -->
-			<?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
+			<!-- Full width author layout -->
+			<div class="col-lg-10 col-xl-8">
 
 			<main class="site-main" id="main">
 
@@ -100,8 +100,7 @@ $container = get_theme_mod( 'wsbase_container_type' );
 			<!-- The pagination component -->
 			<?php wsbase_pagination(); ?>
 
-			<!-- Do the right sidebar check -->
-			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
+			</div><!-- .col-lg-10 col-xl-8 -->
 
 		</div> <!-- .row -->
 

@@ -18,8 +18,8 @@ $container = get_theme_mod( 'wsbase_container_type' );
 
 		<div class="row justify-content-center">
 
-			<!-- Use full width for single posts without sidebar -->
-			<div class="col-lg-10 col-12">
+			<!-- Optimal reading width aligned with navbar -->
+			<div class="col-lg-10 col-xl-8">
 
 			<main class="site-main" id="main">
 
@@ -38,7 +38,7 @@ $container = get_theme_mod( 'wsbase_container_type' );
 
 			</main><!-- #main -->
 
-			</div><!-- .col-lg-10 -->
+			</div><!-- .col-lg-10 col-xl-8 -->
 
 		</div><!-- .row -->
 

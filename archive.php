@@ -20,10 +20,10 @@ $container = get_theme_mod('wsbase_container_type');
 
 	<div class="<?php echo esc_attr($container); ?>" id="content" tabindex="-1">
 
-		<div class="row">
+		<div class="row justify-content-center">
 
-			<!-- Do the left sidebar check -->
-			<?php get_template_part('global-templates/left-sidebar-check'); ?>
+			<!-- Full width archive layout -->
+			<div class="col-lg-10 col-xl-8">
 
 			<main class="site-main" id="main">
 
@@ -60,12 +60,10 @@ $container = get_theme_mod('wsbase_container_type');
 
 			</main><!-- #main -->
 
-			<?php
-			// Display the pagination component.
-			wsbase_pagination();
-			// Do the right sidebar check.
-			get_template_part('global-templates/right-sidebar-check');
-			?>
+			<!-- The pagination component -->
+			<?php wsbase_pagination(); ?>
+
+			</div><!-- .col-lg-10 col-xl-8 -->
 
 		</div><!-- .row -->
 
