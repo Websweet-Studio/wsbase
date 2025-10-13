@@ -220,30 +220,53 @@ if (!function_exists('wsbase_post_nav')) {
 		if (!$next && !$previous) {
 			return;
 		}
-	?>
-		<nav class="container navigation post-navigation py-2 px-0 my-3 border-top border-bottom">
-			<h2 class="screen-reader-text"><?php esc_html_e('Post navigation', 'wsbase'); ?></h2>
-			<div class="d-flex nav-links justify-content-between">
-				<?php
-				if (get_previous_post_link()) {
-					previous_post_link('<span class="nav-previous btn btn-link rounded-0">%link</span>', _x('
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-					</svg>
-					&nbsp;%title
-					', 'Previous post link', 'wsbase'));
-				}
-				if (get_next_post_link()) {
-					next_post_link('<span class="nav-next btn btn-link rounded-0">%link</span>', _x('
-					%title&nbsp;
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-					</svg>
-					', 'Next post link', 'wsbase'));
-				}
-				?>
-			</div><!-- .nav-links -->
-		</nav><!-- .navigation -->
+		?>
+		<nav class="modern-post-navigation">
+			<div class="container">
+				<h2 class="screen-reader-text"><?php esc_html_e('Post navigation', 'wsbase'); ?></h2>
+				<div class="nav-links">
+					<?php if ($previous) : ?>
+						<div class="nav-item nav-previous">
+							<a href="<?php echo esc_url(get_permalink($previous->ID)); ?>" class="nav-link">
+								<?php if (has_post_thumbnail($previous->ID)) : ?>
+									<div class="nav-image" style="background-image: url(<?php echo esc_url(get_the_post_thumbnail_url($previous->ID, 'thumbnail')); ?>);"></div>
+								<?php endif; ?>
+								<div class="nav-content">
+									<div class="nav-label">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+										</svg>
+										<?php esc_html_e('Previous Post', 'wsbase'); ?>
+									</div>
+									<div class="nav-title"><?php echo get_the_title($previous->ID); ?></div>
+									<div class="nav-date"><?php echo get_the_date('M j, Y', $previous->ID); ?></div>
+								</div>
+							</a>
+						</div>
+					<?php endif; ?>
+
+					<?php if ($next) : ?>
+						<div class="nav-item nav-next">
+							<a href="<?php echo esc_url(get_permalink($next->ID)); ?>" class="nav-link">
+								<?php if (has_post_thumbnail($next->ID)) : ?>
+									<div class="nav-image" style="background-image: url(<?php echo esc_url(get_the_post_thumbnail_url($next->ID, 'thumbnail')); ?>);"></div>
+								<?php endif; ?>
+								<div class="nav-content">
+									<div class="nav-label">
+										<?php esc_html_e('Next Post', 'wsbase'); ?>
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+										</svg>
+									</div>
+									<div class="nav-title"><?php echo get_the_title($next->ID); ?></div>
+									<div class="nav-date"><?php echo get_the_date('M j, Y', $next->ID); ?></div>
+								</div>
+							</a>
+						</div>
+					<?php endif; ?>
+				</div>
+			</div>
+		</nav><!-- .modern-post-navigation -->
 <?php
 	}
 }
