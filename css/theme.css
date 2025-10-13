@@ -14934,4 +14934,157 @@ figure.woocommerce-product-gallery__wrapper {
   white-space: normal !important;
 }
 
+.modern-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  border: none;
+  box-shadow: none;
+}
+.modern-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+.modern-card .card-img-wrapper {
+  overflow: hidden;
+  background: #f8f9fa;
+}
+.modern-card .card-img-wrapper .card-img-top {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.modern-card .card-img-wrapper :hover .card-img-top {
+  transform: scale(1.02);
+}
+.modern-card .card-content {
+  padding: 20px;
+}
+.modern-card .card-content .card-meta {
+  margin-bottom: 12px;
+}
+.modern-card .card-content .card-meta .post-author {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #666;
+}
+.modern-card .card-content .card-meta .post-author .author-name {
+  font-weight: 500;
+  color: #333;
+}
+.modern-card .card-content .card-meta .post-author .post-separator {
+  margin: 0 8px;
+  color: #ddd;
+}
+.modern-card .card-content .card-meta .post-author .post-date {
+  color: #666;
+}
+.modern-card .card-content .entry-header {
+  margin-bottom: 12px;
+}
+.modern-card .card-content .entry-header .entry-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+}
+.modern-card .card-content .entry-header .entry-title a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.modern-card .card-content .entry-header .entry-title a:hover {
+  color: #333;
+}
+.modern-card .card-content .entry-content {
+  margin-bottom: 20px;
+}
+.modern-card .card-content .entry-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+.modern-card .card-content .entry-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modern-card .card-content .entry-footer .post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.modern-card .card-content .entry-footer .post-tags .tag-item {
+  background: #f1f3f4;
+  color: #5f6368;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.modern-card .card-content .entry-footer .post-tags .tag-item:hover {
+  background: #e8f0fe;
+  color: #1a73e8;
+}
+.modern-card .card-content .entry-footer .read-more-arrow {
+  color: #666;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: transparent;
+}
+.modern-card .card-content .entry-footer .read-more-arrow:hover {
+  color: #000;
+  background: #f8f9fa;
+  transform: translateX(2px);
+}
+.modern-card .card-content .entry-footer .read-more-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+#index-wrapper {
+  padding: 40px 0;
+  background-color: #ffffff;
+}
+#index-wrapper #content {
+  padding-top: 20px;
+}
+#index-wrapper .page-header {
+  text-align: center;
+  padding: 40px 0;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 40px;
+}
+#index-wrapper .page-header .page-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 8px;
+}
+#index-wrapper .blog-posts .row {
+  margin: 0 -12px;
+}
+#index-wrapper .blog-posts .col-lg-4,
+#index-wrapper .blog-posts .col-md-6 {
+  padding: 0 12px;
+  margin-bottom: 24px;
+}
+#index-wrapper .pagination {
+  margin-top: 40px;
+}
+
 /*# sourceMappingURL=theme.css.map */
