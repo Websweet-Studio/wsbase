@@ -15076,12 +15076,12 @@ figure.woocommerce-product-gallery__wrapper {
   margin-bottom: 8px;
 }
 #index-wrapper .blog-posts .row {
-  margin: 0 -12px;
+  margin: 0 -15px;
 }
-#index-wrapper .blog-posts .col-lg-4,
+#index-wrapper .blog-posts .col-lg-6,
 #index-wrapper .blog-posts .col-md-6 {
-  padding: 0 12px;
-  margin-bottom: 24px;
+  padding: 0 15px;
+  margin-bottom: 30px;
 }
 #index-wrapper .pagination {
   margin-top: 40px;

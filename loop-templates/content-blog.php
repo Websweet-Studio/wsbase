@@ -10,7 +10,7 @@
 defined('ABSPATH') || exit;
 ?>
 
-<div class="col-lg-4 col-md-6 mb-4">
+<div class="col-lg-6 col-md-6 mb-4">
   <article <?php post_class('modern-card blog-card'); ?> id="post-<?php the_ID(); ?>">
 
     <?php if (has_post_thumbnail()) : ?>
