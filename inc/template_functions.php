@@ -372,6 +372,99 @@ if (!function_exists('wsbase_navbar_offcanvas')) {
 	}
 }
 
+if (!function_exists('wsbase_reading_time')) {
+    /**
+     * Calculate estimated reading time
+     */
+    function wsbase_reading_time() {
+        $content = get_post_field('post_content', get_the_ID());
+        $word_count = str_word_count(strip_tags($content));
+        $reading_time = ceil($word_count / 200); // Assuming 200 words per minute
+
+        if ($reading_time == 1) {
+            return '1 min read';
+        } else {
+            return $reading_time . ' min read';
+        }
+    }
+}
+
+if (!function_exists('wsbase_comment_callback')) {
+    /**
+     * Custom comment callback for modern styling
+     */
+    function wsbase_comment_callback($comment, $args, $depth) {
+        $tag = ('div' === $args['style']) ? 'div' : 'li';
+        $add_below = 'div' === $args['style'] ? 'comment' : 'div-comment';
+        ?>
+        <<?php echo $tag; ?> <?php comment_class('modern-comment-item'); ?> id="comment-<?php comment_ID(); ?>">
+            <div class="comment-body">
+                <div class="comment-avatar">
+                    <?php if (0 != $args['avatar_size']) {
+                        echo get_avatar($comment, $args['avatar_size']);
+                    } ?>
+                </div>
+
+                <div class="comment-content">
+                    <div class="comment-meta">
+                        <div class="comment-author">
+                            <?php echo get_comment_author_link(); ?>
+                            <?php if ($comment->user_id === get_the_author_meta('ID')) : ?>
+                                <span class="author-badge">Author</span>
+                            <?php endif; ?>
+                        </div>
+                        <div class="comment-date">
+                            <time datetime="<?php comment_time('c'); ?>">
+                                <?php
+                                printf(
+                                    '%1$s at %2$s',
+                                    get_comment_date(),
+                                    get_comment_time()
+                                );
+                                ?>
+                            </time>
+                        </div>
+                    </div>
+
+                    <div class="comment-text">
+                        <?php if ('0' == $comment->comment_approved) : ?>
+                            <p class="comment-awaiting-moderation"><?php esc_html_e('Your comment is awaiting moderation.', 'wsbase'); ?></p>
+                        <?php endif; ?>
+
+                        <?php comment_text(); ?>
+                    </div>
+
+                    <div class="comment-actions">
+                        <?php
+                        comment_reply_link(
+                            array_merge(
+                                $args,
+                                array(
+                                    'add_below' => $add_below,
+                                    'depth' => $depth,
+                                    'max_depth' => $args['max_depth'],
+                                    'before' => '<span class="reply-link">',
+                                    'after' => '</span>',
+                                )
+                            )
+                        );
+                        ?>
+
+                        <?php
+                        edit_comment_link(
+                            esc_html__('Edit', 'wsbase'),
+                            '<span class="edit-link">',
+                            '</span>'
+                        );
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </<?php echo $tag; ?>>
+        <?php
+    }
+}
+
 if (!function_exists('wsbase_skip_link')) {
     /**
      * Skip Link
