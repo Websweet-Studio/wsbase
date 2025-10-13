@@ -47,7 +47,7 @@ if( ! function_exists( 'wsbase_add_navbar' ) ) {
 		$header_position   = get_theme_mod( 'wsbase_header_position', 'position-relative' );
 		?>
 
-		<header id="wrapper-navbar" class="<?php echo $header_position; ?> bg-white shadow-light">
+		<header id="wrapper-navbar" class="<?php echo $header_position; ?> bg-white">
 
 			<a class="visually-hidden-focusable" href="#content"><?php esc_html_e( 'Skip to content', 'wsbase' ); ?></a>
 
@@ -70,11 +70,121 @@ if( ! function_exists( 'wsbase_add_footer' ) ) {
 		?>
 		<div class="wrapper-footer" id="wrapper-footer">
 			<footer class="site-footer" id="colophon">
-				<div class="<?php echo esc_attr( $container ); ?> py-3">
-					<div class="site-info">
-						<?php wsbase_site_info(); ?>
-					</div><!-- .site-info -->
-				</div><!-- container end -->
+
+				<!-- Footer main content -->
+				<div class="footer-main py-5 bg-light">
+					<div class="<?php echo esc_attr( $container ); ?>">
+						<div class="row">
+							<!-- About section -->
+							<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+								<div class="footer-about">
+									<?php if ( ! has_custom_logo() ) : ?>
+										<h3 class="footer-brand mb-3">
+											<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+												<?php bloginfo( 'name' ); ?>
+											</a>
+										</h3>
+									<?php else : ?>
+										<div class="footer-logo mb-3">
+											<?php the_custom_logo(); ?>
+										</div>
+									<?php endif; ?>
+
+									<p class="footer-description text-muted">
+										<?php
+										$footer_description = get_theme_mod( 'wsbase_footer_description', get_bloginfo( 'description' ) );
+										echo esc_html( $footer_description );
+										?>
+									</p>
+								</div>
+							</div>
+
+							<!-- Quick links -->
+							<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+								<h4 class="footer-title h5 mb-3">Quick Links</h4>
+								<?php
+								wp_nav_menu(
+									array(
+										'theme_location' => 'footer',
+										'container' => false,
+										'menu_class' => 'footer-menu list-unstyled',
+										'depth' => 1,
+										'fallback_cb' => false,
+									)
+								);
+								?>
+							</div>
+
+							<!-- Contact info -->
+							<div class="col-lg-4 col-md-12">
+								<h4 class="footer-title h5 mb-3">Contact Info</h4>
+								<div class="footer-contact">
+									<?php
+									$footer_contact = get_theme_mod( 'wsbase_footer_contact', '' );
+									if ( $footer_contact ) :
+										echo '<div class="contact-info text-muted">' . wp_kses_post( $footer_contact ) . '</div>';
+									endif;
+									?>
+
+									<!-- Social links -->
+									<div class="social-links mt-3">
+										<?php
+										$social_links = array(
+											'facebook' => get_theme_mod( 'wsbase_facebook', '#' ),
+											'twitter' => get_theme_mod( 'wsbase_twitter', '#' ),
+											'instagram' => get_theme_mod( 'wsbase_instagram', '#' ),
+											'linkedin' => get_theme_mod( 'wsbase_linkedin', '#' ),
+										);
+
+										foreach ( $social_links as $platform => $url ) :
+											if ( $url && $url !== '#' ) :
+												?>
+												<a href="<?php echo esc_url( $url ); ?>"
+												   class="social-link me-2 text-muted"
+												   target="_blank"
+												   rel="noopener noreferrer"
+												   aria-label="<?php echo esc_attr( ucfirst( $platform ) ); ?>">
+													<i class="fab fa-<?php echo esc_attr( $platform ); ?>"></i>
+												</a>
+												<?php
+											endif;
+										endforeach;
+										?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Footer bottom -->
+				<div class="footer-bottom py-3 bg-white border-top">
+					<div class="<?php echo esc_attr( $container ); ?>">
+						<div class="row align-items-center">
+							<div class="col-md-6">
+								<div class="copyright text-muted small">
+									<?php wsbase_site_info(); ?>
+								</div>
+							</div>
+							<div class="col-md-6 text-md-end">
+								<div class="footer-bottom-links">
+									<?php
+									wp_nav_menu(
+										array(
+											'theme_location' => 'footer-bottom',
+											'container' => false,
+											'menu_class' => 'footer-bottom-menu list-unstyled list-inline mb-0 small',
+											'depth' => 1,
+											'fallback_cb' => false,
+										)
+									);
+									?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</footer><!-- #colophon -->
 		</div><!-- wrapper end -->
 		<?php
