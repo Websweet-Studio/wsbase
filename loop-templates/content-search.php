@@ -2,7 +2,7 @@
 /**
  * Search results partial template
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.
@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 
 			<div class="entry-meta">
 
-				<?php wssbase_posted_on(); ?>
+				<?php wsbase_posted_on(); ?>
 
 			</div><!-- .entry-meta -->
 
@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<footer class="entry-footer">
 
-		<?php wssbase_entry_footer(); ?>
+		<?php wsbase_entry_footer(); ?>
 
 	</footer><!-- .entry-footer -->
 

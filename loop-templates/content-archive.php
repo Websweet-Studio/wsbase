@@ -3,7 +3,7 @@
 /**
  * Template part for displaying posts in archive pages with modern card layout
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.

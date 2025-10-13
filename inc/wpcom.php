@@ -4,21 +4,21 @@
  *
  * This file is centrally included from `wp-content/mu-plugins/wpcom-theme-compat.php`.
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'after_setup_theme', 'wssbase_wpcom_setup' );
+add_action( 'after_setup_theme', 'wsbase_wpcom_setup' );
 
-if ( ! function_exists( 'wssbase_wpcom_setup' ) ) {
+if ( ! function_exists( 'wsbase_wpcom_setup' ) ) {
 	/**
 	 * Adds support for wp.com-specific theme functions.
 	 *
 	 * @global array $themecolors
 	 */
-	function wssbase_wpcom_setup() {
+	function wsbase_wpcom_setup() {
 		global $themecolors;
 
 		// Set theme colors for third party services.
@@ -37,13 +37,13 @@ if ( ! function_exists( 'wssbase_wpcom_setup' ) ) {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'wssbase_wpcom_styles' );
+add_action( 'wp_enqueue_scripts', 'wsbase_wpcom_styles' );
 
-if ( ! function_exists( 'wssbase_wpcom_styles' ) ) {
+if ( ! function_exists( 'wsbase_wpcom_styles' ) ) {
 	/**
 	 * WordPress.com-specific styles
 	 */
-	function wssbase_wpcom_styles() {
-		wp_enqueue_style( 'wssbase-wpcom', get_template_directory_uri() . '/inc/style-wpcom.css', array(), '20160411' );
+	function wsbase_wpcom_styles() {
+		wp_enqueue_style( 'wsbase-wpcom', get_template_directory_uri() . '/inc/style-wpcom.css', array(), '20160411' );
 	}
 }

@@ -5,17 +5,17 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
 
-if (!function_exists('wssbase_posted_on')) {
+if (!function_exists('wsbase_posted_on')) {
 	/**
 	 * Prints HTML with meta information for the current post-date/time and author.
 	 */
-	function wssbase_posted_on()
+	function wsbase_posted_on()
 	{
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 		if (get_the_time('U') !== get_the_modified_time('U')) {
@@ -29,19 +29,19 @@ if (!function_exists('wssbase_posted_on')) {
 			esc_html(get_the_modified_date())
 		);
 		$posted_on   = apply_filters(
-			'wssbase_posted_on',
+			'wsbase_posted_on',
 			sprintf(
 				'<span class="posted-on">%1$s <a href="%2$s" rel="bookmark">%3$s</a></span>',
-				esc_html_x('Posted on', 'post date', 'wssbase'),
+				esc_html_x('Posted on', 'post date', 'wsbase'),
 				esc_url(get_permalink()),
-				apply_filters('wssbase_posted_on_time', $time_string)
+				apply_filters('wsbase_posted_on_time', $time_string)
 			)
 		);
 		$byline      = apply_filters(
-			'wssbase_posted_by',
+			'wsbase_posted_by',
 			sprintf(
 				'<span class="byline"> %1$s<span class="author vcard"> <a class="url fn n" href="%2$s">%3$s</a></span></span>',
-				$posted_on ? esc_html_x('by', 'post author', 'wssbase') : esc_html_x('Posted by', 'post author', 'wssbase'),
+				$posted_on ? esc_html_x('by', 'post author', 'wsbase') : esc_html_x('Posted by', 'post author', 'wsbase'),
 				esc_url(get_author_posts_url(get_the_author_meta('ID'))),
 				esc_html(get_the_author())
 			)
@@ -50,45 +50,45 @@ if (!function_exists('wssbase_posted_on')) {
 	}
 }
 
-if (!function_exists('wssbase_entry_footer')) {
+if (!function_exists('wsbase_entry_footer')) {
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function wssbase_entry_footer()
+	function wsbase_entry_footer()
 	{
 		// Hide category and tag text for pages.
 		if ('post' === get_post_type()) {
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list(esc_html__(', ', 'wssbase'));
-			if ($categories_list && wssbase_categorized_blog()) {
+			$categories_list = get_the_category_list(esc_html__(', ', 'wsbase'));
+			if ($categories_list && wsbase_categorized_blog()) {
 				/* translators: %s: Categories of current post */
-				printf('<span class="cat-links">' . esc_html__('Posted in %s', 'wssbase') . '</span>', $categories_list); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf('<span class="cat-links">' . esc_html__('Posted in %s', 'wsbase') . '</span>', $categories_list); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list('', esc_html__(', ', 'wssbase'));
+			$tags_list = get_the_tag_list('', esc_html__(', ', 'wsbase'));
 			if ($tags_list) {
 				/* translators: %s: Tags of current post */
-				printf('<span class="tags-links">' . esc_html__('Tagged %s', 'wssbase') . '</span>', $tags_list); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf('<span class="tags-links">' . esc_html__('Tagged %s', 'wsbase') . '</span>', $tags_list); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 		}
 		if (!is_single() && !post_password_required() && (comments_open() || get_comments_number())) {
 			echo '<span class="comments-link">';
-			comments_popup_link(esc_html__('Leave a comment', 'wssbase'), esc_html__('1 Comment', 'wssbase'), esc_html__('% Comments', 'wssbase'));
+			comments_popup_link(esc_html__('Leave a comment', 'wsbase'), esc_html__('1 Comment', 'wsbase'), esc_html__('% Comments', 'wsbase'));
 			echo '</span>';
 		}
-		wssbase_edit_post_link();
+		wsbase_edit_post_link();
 	}
 }
 
-if (!function_exists('wssbase_categorized_blog')) {
+if (!function_exists('wsbase_categorized_blog')) {
 	/**
 	 * Returns true if a blog has more than 1 category.
 	 *
 	 * @return bool
 	 */
-	function wssbase_categorized_blog()
+	function wsbase_categorized_blog()
 	{
-		$all_the_cool_cats = get_transient('wssbase_categories');
+		$all_the_cool_cats = get_transient('wsbase_categories');
 		if (false === $all_the_cool_cats) {
 			// Create an array of all the categories that are attached to posts.
 			$all_the_cool_cats = get_categories(
@@ -101,46 +101,46 @@ if (!function_exists('wssbase_categorized_blog')) {
 			);
 			// Count the number of categories that are attached to the posts.
 			$all_the_cool_cats = count($all_the_cool_cats);
-			set_transient('wssbase_categories', $all_the_cool_cats);
+			set_transient('wsbase_categories', $all_the_cool_cats);
 		}
 		if ($all_the_cool_cats > 1) {
-			// This blog has more than 1 category so wssbase_categorized_blog should return true.
+			// This blog has more than 1 category so wsbase_categorized_blog should return true.
 			return true;
 		}
-		// This blog has only 1 category so wssbase_categorized_blog should return false.
+		// This blog has only 1 category so wsbase_categorized_blog should return false.
 		return false;
 	}
 }
 
-add_action('edit_category', 'wssbase_category_transient_flusher');
-add_action('save_post', 'wssbase_category_transient_flusher');
+add_action('edit_category', 'wsbase_category_transient_flusher');
+add_action('save_post', 'wsbase_category_transient_flusher');
 
-if (!function_exists('wssbase_category_transient_flusher')) {
+if (!function_exists('wsbase_category_transient_flusher')) {
 	/**
-	 * Flush out the transients used in wssbase_categorized_blog.
+	 * Flush out the transients used in wsbase_categorized_blog.
 	 */
-	function wssbase_category_transient_flusher()
+	function wsbase_category_transient_flusher()
 	{
 		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
 			return;
 		}
 		// Like, beat it. Dig?
-		delete_transient('wssbase_categories');
+		delete_transient('wsbase_categories');
 	}
 }
 
-if (!function_exists('wssbase_body_attributes')) {
+if (!function_exists('wsbase_body_attributes')) {
 	/**
 	 * Displays the attributes for the body element.
 	 */
-	function wssbase_body_attributes()
+	function wsbase_body_attributes()
 	{
 		/**
 		 * Filters the body attributes.
 		 *
 		 * @param array $atts An associative array of attributes.
 		 */
-		$atts = array_unique(apply_filters('wssbase_body_attributes', $atts = array()));
+		$atts = array_unique(apply_filters('wsbase_body_attributes', $atts = array()));
 		if (!is_array($atts) || empty($atts)) {
 			return;
 		}
@@ -156,13 +156,13 @@ if (!function_exists('wssbase_body_attributes')) {
 	}
 }
 
-if (!function_exists('wssbase_comment_navigation')) {
+if (!function_exists('wsbase_comment_navigation')) {
 	/**
 	 * Displays the comment navigation.
 	 *
 	 * @param string $nav_id The ID of the comment navigation.
 	 */
-	function wssbase_comment_navigation($nav_id)
+	function wsbase_comment_navigation($nav_id)
 	{
 		if (get_comment_pages_count() <= 1) {
 			// Return early if there are no comments to navigate through.
@@ -171,17 +171,17 @@ if (!function_exists('wssbase_comment_navigation')) {
 ?>
 		<nav class="comment-navigation" id="<?php echo esc_attr($nav_id); ?>">
 
-			<h1 class="screen-reader-text"><?php esc_html_e('Comment navigation', 'wssbase'); ?></h1>
+			<h1 class="screen-reader-text"><?php esc_html_e('Comment navigation', 'wsbase'); ?></h1>
 
 			<?php if (get_previous_comments_link()) { ?>
 				<div class="nav-previous">
-					<?php previous_comments_link(__('&larr; Older Comments', 'wssbase')); ?>
+					<?php previous_comments_link(__('&larr; Older Comments', 'wsbase')); ?>
 				</div>
 			<?php } ?>
 
 			<?php if (get_next_comments_link()) { ?>
 				<div class="nav-next">
-					<?php next_comments_link(__('Newer Comments &rarr;', 'wssbase')); ?>
+					<?php next_comments_link(__('Newer Comments &rarr;', 'wsbase')); ?>
 				</div>
 			<?php } ?>
 
@@ -190,16 +190,16 @@ if (!function_exists('wssbase_comment_navigation')) {
 	}
 }
 
-if (!function_exists('wssbase_edit_post_link')) {
+if (!function_exists('wsbase_edit_post_link')) {
 	/**
 	 * Displays the edit post link for post.
 	 */
-	function wssbase_edit_post_link()
+	function wsbase_edit_post_link()
 	{
 		edit_post_link(
 			sprintf(
 				/* translators: %s: Name of current post */
-				esc_html__('Edit %s', 'wssbase'),
+				esc_html__('Edit %s', 'wsbase'),
 				the_title('<span class="screen-reader-text">"', '"</span>', false)
 			),
 			'<span class="edit-link">',
@@ -208,11 +208,11 @@ if (!function_exists('wssbase_edit_post_link')) {
 	}
 }
 
-if (!function_exists('wssbase_post_nav')) {
+if (!function_exists('wsbase_post_nav')) {
 	/**
 	 * Display navigation to next/previous post when applicable.
 	 */
-	function wssbase_post_nav()
+	function wsbase_post_nav()
 	{
 		// Don't print empty markup if there's nowhere to navigate.
 		$previous = (is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false, '', true);
@@ -222,7 +222,7 @@ if (!function_exists('wssbase_post_nav')) {
 		}
 	?>
 		<nav class="container navigation post-navigation py-2 px-0 my-3 border-top border-bottom">
-			<h2 class="screen-reader-text"><?php esc_html_e('Post navigation', 'wssbase'); ?></h2>
+			<h2 class="screen-reader-text"><?php esc_html_e('Post navigation', 'wsbase'); ?></h2>
 			<div class="d-flex nav-links justify-content-between">
 				<?php
 				if (get_previous_post_link()) {
@@ -231,7 +231,7 @@ if (!function_exists('wssbase_post_nav')) {
 					<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
 					</svg>
 					&nbsp;%title
-					', 'Previous post link', 'wssbase'));
+					', 'Previous post link', 'wsbase'));
 				}
 				if (get_next_post_link()) {
 					next_post_link('<span class="nav-next btn btn-link rounded-0">%link</span>', _x('
@@ -239,7 +239,7 @@ if (!function_exists('wssbase_post_nav')) {
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
 					<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
 					</svg>
-					', 'Next post link', 'wssbase'));
+					', 'Next post link', 'wsbase'));
 				}
 				?>
 			</div><!-- .nav-links -->
@@ -248,7 +248,7 @@ if (!function_exists('wssbase_post_nav')) {
 	}
 }
 
-if (!function_exists('wssbase_link_pages')) {
+if (!function_exists('wsbase_link_pages')) {
 	/**
 	 * Displays/retrieves page links for paginated posts (i.e. including the
 	 * `<!--nextpage-->` Quicktag one or more times). This tag must be
@@ -256,12 +256,12 @@ if (!function_exists('wssbase_link_pages')) {
 	 *
 	 * @return void|string Formatted output in HTML.
 	 */
-	function wssbase_link_pages()
+	function wsbase_link_pages()
 	{
 		$args = apply_filters(
-			'wssbase_link_pages_args',
+			'wsbase_link_pages_args',
 			array(
-				'before' => '<div class="page-links">' . esc_html__('Pages:', 'wssbase'),
+				'before' => '<div class="page-links">' . esc_html__('Pages:', 'wsbase'),
 				'after'  => '</div>',
 			)
 		);

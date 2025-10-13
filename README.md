@@ -1,13 +1,13 @@
-# WssBase
+# WsBase
 
-WssBase is a simple starter theme for WordPress that offers a clean and minimalist design, making it both user-friendly and highly customizable. This theme comes with the added support and enhancements provided by [WebSweetStudio.com](https://websweetstudio.com/).
+WsBase is a simple starter theme for WordPress that offers a clean and minimalist design, making it both user-friendly and highly customizable. This theme comes with the added support and enhancements provided by [WebSweetStudio.com](https://websweetstudio.com/).
 
 ## Installation
 
 Install manually to your theme directory.
 
-- Download or clone the repository from [GitHub](https://github.com/websweetstudio/wssbase.git)
-- Copy the contents of the `wssbase` folder to your `wp-content/themes` folder.
+- Download or clone the repository from [GitHub](https://github.com/websweetstudio/wsbase.git)
+- Copy the contents of the `wsbase` folder to your `wp-content/themes` folder.
 - Activate the theme.
 
 ## Development
@@ -42,9 +42,9 @@ npm run build
 
 ## License
 
-WssBase is distributed under the GNU General Public License v3.0 (GPL-3.0). Feel free to modify and share the theme in accordance with the license terms.
+WsBase is distributed under the GNU General Public License v3.0 (GPL-3.0). Feel free to modify and share the theme in accordance with the license terms.
 
 ## Demo
 
-To see WssBase in action, you can visit the demo site at [https://template.sweet.web.id/](https://template.sweet.web.id/).
+To see WsBase in action, you can visit the demo site at [https://template.sweet.web.id/](https://template.sweet.web.id/).
 Feel free to explore the theme and discover its clean design and customizable features. Happy website building!

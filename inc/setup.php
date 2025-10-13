@@ -2,7 +2,7 @@
 /**
  * Theme basic setup
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.
@@ -13,9 +13,9 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 640; /* pixels */
 }
 
-add_action( 'after_setup_theme', 'wssbase_setup' );
+add_action( 'after_setup_theme', 'wsbase_setup' );
 
-if ( ! function_exists( 'wssbase_setup' ) ) {
+if ( ! function_exists( 'wsbase_setup' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -23,13 +23,13 @@ if ( ! function_exists( 'wssbase_setup' ) ) {
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function wssbase_setup() {
+	function wsbase_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * to change 'wssbase' to the name of your theme in all the template files
+		 * to change 'wsbase' to the name of your theme in all the template files
 		 */
-		// load_theme_textdomain( 'wssbase', get_template_directory() . '/languages' );
+		// load_theme_textdomain( 'wsbase', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -45,7 +45,7 @@ if ( ! function_exists( 'wssbase_setup' ) ) {
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'primary' => __( 'Primary Menu', 'wssbase' ),
+				'primary' => __( 'Primary Menu', 'wsbase' ),
 			)
 		);
 
@@ -109,7 +109,7 @@ if ( ! function_exists( 'wssbase_setup' ) ) {
 		add_theme_support( "html5", array( "search-form", "comment-form", "comment-list", "gallery", "caption" ) );
 
 		// Check and setup theme default settings.
-		wssbase_setup_theme_default_settings();
+		wsbase_setup_theme_default_settings();
 
 	}
 }

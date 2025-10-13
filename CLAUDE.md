@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-WssBase is a WordPress starter theme built with Bootstrap 5. It's a clean, minimalist theme based on Underscores that provides a solid foundation for WordPress theme development with modern tooling.
+WsBase is a WordPress starter theme built with Bootstrap 5. It's a clean, minimalist theme based on Underscores that provides a solid foundation for WordPress theme development with modern tooling.
 
 ## Architecture
 

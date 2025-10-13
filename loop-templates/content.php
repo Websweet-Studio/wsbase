@@ -3,7 +3,7 @@
 /**
  * Post rendering content according to caller of get_template_part
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.
@@ -31,7 +31,7 @@ defined('ABSPATH') || exit;
 
 			<?php if ('post' === get_post_type()) : ?>
 				<div class="entry-meta small text-muted mb-2">
-					<?php wssbase_posted_on(); ?>
+					<?php wsbase_posted_on(); ?>
 				</div><!-- .entry-meta -->
 			<?php endif; ?>
 		</header><!-- .entry-header -->
@@ -43,7 +43,7 @@ defined('ABSPATH') || exit;
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer mt-3">
-			<?php wssbase_entry_footer(); ?>
+			<?php wsbase_entry_footer(); ?>
 		</footer><!-- .entry-footer -->
 	</div><!-- .card-body -->
 

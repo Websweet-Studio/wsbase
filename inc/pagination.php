@@ -2,13 +2,13 @@
 /**
  * Pagination layout
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-if ( ! function_exists( 'wssbase_pagination' ) ) {
+if ( ! function_exists( 'wsbase_pagination' ) ) {
 	/**
 	 * Displays the navigation to next/previous set of posts.
 	 *
@@ -39,7 +39,7 @@ if ( ! function_exists( 'wssbase_pagination' ) ) {
 	 * }
 	 * @param string       $class           (Optional) Classes to be added to the <ul> element. Default 'pagination'.
 	 */
-	function wssbase_pagination( $args = array(), $class = 'pagination' ) {
+	function wsbase_pagination( $args = array(), $class = 'pagination' ) {
 
 		if ( ! isset( $args['total'] ) && $GLOBALS['wp_query']->max_num_pages <= 1 ) {
 			return;
@@ -50,11 +50,11 @@ if ( ! function_exists( 'wssbase_pagination' ) ) {
 			array(
 				'mid_size'           => 2,
 				'prev_next'          => true,
-				'prev_text'          => __( '&laquo;', 'wssbase' ),
-				'next_text'          => __( '&raquo;', 'wssbase' ),
+				'prev_text'          => __( '&laquo;', 'wsbase' ),
+				'next_text'          => __( '&raquo;', 'wsbase' ),
 				'type'               => 'array',
 				'current'            => max( 1, get_query_var( 'paged' ) ),
-				'screen_reader_text' => __( 'Posts navigation', 'wssbase' ),
+				'screen_reader_text' => __( 'Posts navigation', 'wsbase' ),
 			)
 		);
 

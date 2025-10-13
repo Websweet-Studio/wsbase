@@ -4,14 +4,14 @@
  *
  * This template can be used to override the default template and sidebar setup
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
 get_header();
-$container = get_theme_mod( 'wssbase_container_type' );
+$container = get_theme_mod( 'wsbase_container_type' );
 ?>
 
 <div class="wrapper" id="page-wrapper">

@@ -2,7 +2,7 @@
 /**
  * Declaring widgets
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.
@@ -14,9 +14,9 @@ defined( 'ABSPATH' ) || exit;
  *
  * @link https://developer.wordpress.org/reference/hooks/dynamic_sidebar_params/
  */
-add_filter( 'dynamic_sidebar_params', 'wssbase_widget_classes' );
+add_filter( 'dynamic_sidebar_params', 'wsbase_widget_classes' );
 
-if ( ! function_exists( 'wssbase_widget_classes' ) ) {
+if ( ! function_exists( 'wsbase_widget_classes' ) ) {
 
 	/**
 	 * Count number of visible widgets in a sidebar and add classes to widgets accordingly,
@@ -49,7 +49,7 @@ if ( ! function_exists( 'wssbase_widget_classes' ) ) {
 	 * }
 	 * @return array $params
 	 */
-	function wssbase_widget_classes( $params ) {
+	function wsbase_widget_classes( $params ) {
 
 		global $sidebars_widgets;
 
@@ -89,20 +89,20 @@ if ( ! function_exists( 'wssbase_widget_classes' ) ) {
 		return $params;
 
 	}
-} // End of if function_exists( 'wssbase_widget_classes' ).
+} // End of if function_exists( 'wsbase_widget_classes' ).
 
-add_action( 'widgets_init', 'wssbase_widgets_init' );
+add_action( 'widgets_init', 'wsbase_widgets_init' );
 
-if ( ! function_exists( 'wssbase_widgets_init' ) ) {
+if ( ! function_exists( 'wsbase_widgets_init' ) ) {
 	/**
 	 * Initializes themes widgets.
 	 */
-	function wssbase_widgets_init() {
+	function wsbase_widgets_init() {
 		register_sidebar(
 			array(
-				'name'          => __( 'Right Sidebar', 'wssbase' ),
+				'name'          => __( 'Right Sidebar', 'wsbase' ),
 				'id'            => 'right-sidebar',
-				'description'   => __( 'Right sidebar widget area', 'wssbase' ),
+				'description'   => __( 'Right sidebar widget area', 'wsbase' ),
 				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</aside>',
 				'before_title'  => '<h3 class="widget-title">',
@@ -112,9 +112,9 @@ if ( ! function_exists( 'wssbase_widgets_init' ) ) {
 
 		register_sidebar(
 			array(
-				'name'          => __( 'Left Sidebar', 'wssbase' ),
+				'name'          => __( 'Left Sidebar', 'wsbase' ),
 				'id'            => 'left-sidebar',
-				'description'   => __( 'Left sidebar widget area', 'wssbase' ),
+				'description'   => __( 'Left sidebar widget area', 'wsbase' ),
 				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</aside>',
 				'before_title'  => '<h3 class="widget-title">',
@@ -124,9 +124,9 @@ if ( ! function_exists( 'wssbase_widgets_init' ) ) {
 
 		register_sidebar(
 			array(
-				'name'          => __( 'Hero Slider', 'wssbase' ),
+				'name'          => __( 'Hero Slider', 'wsbase' ),
 				'id'            => 'hero',
-				'description'   => __( 'Hero slider area. Place two or more widgets here and they will slide!', 'wssbase' ),
+				'description'   => __( 'Hero slider area. Place two or more widgets here and they will slide!', 'wsbase' ),
 				'before_widget' => '<div class="carousel-item">',
 				'after_widget'  => '</div>',
 				'before_title'  => '',
@@ -136,9 +136,9 @@ if ( ! function_exists( 'wssbase_widgets_init' ) ) {
 
 		register_sidebar(
 			array(
-				'name'          => __( 'Hero Canvas', 'wssbase' ),
+				'name'          => __( 'Hero Canvas', 'wsbase' ),
 				'id'            => 'herocanvas',
-				'description'   => __( 'Full size canvas hero area for Bootstrap and other custom HTML markup', 'wssbase' ),
+				'description'   => __( 'Full size canvas hero area for Bootstrap and other custom HTML markup', 'wsbase' ),
 				'before_widget' => '',
 				'after_widget'  => '',
 				'before_title'  => '',
@@ -148,9 +148,9 @@ if ( ! function_exists( 'wssbase_widgets_init' ) ) {
 
 		register_sidebar(
 			array(
-				'name'          => __( 'Top Full', 'wssbase' ),
+				'name'          => __( 'Top Full', 'wsbase' ),
 				'id'            => 'statichero',
-				'description'   => __( 'Full top widget with dynamic grid', 'wssbase' ),
+				'description'   => __( 'Full top widget with dynamic grid', 'wsbase' ),
 				'before_widget' => '<div id="%1$s" class="static-hero-widget %2$s dynamic-classes">',
 				'after_widget'  => '</div><!-- .static-hero-widget -->',
 				'before_title'  => '<h3 class="widget-title">',
@@ -160,9 +160,9 @@ if ( ! function_exists( 'wssbase_widgets_init' ) ) {
 
 		register_sidebar(
 			array(
-				'name'          => __( 'Footer Full', 'wssbase' ),
+				'name'          => __( 'Footer Full', 'wsbase' ),
 				'id'            => 'footerfull',
-				'description'   => __( 'Full sized footer widget with dynamic grid', 'wssbase' ),
+				'description'   => __( 'Full sized footer widget with dynamic grid', 'wsbase' ),
 				'before_widget' => '<div id="%1$s" class="footer-widget %2$s dynamic-classes">',
 				'after_widget'  => '</div><!-- .footer-widget -->',
 				'before_title'  => '<h3 class="widget-title">',
@@ -171,4 +171,4 @@ if ( ! function_exists( 'wssbase_widgets_init' ) ) {
 		);
 
 	}
-} // End of function_exists( 'wssbase_widgets_init' ).
+} // End of function_exists( 'wsbase_widgets_init' ).

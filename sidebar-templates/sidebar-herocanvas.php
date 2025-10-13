@@ -2,7 +2,7 @@
 /**
  * Sidebar - The Hero Canvas Widget Area
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.

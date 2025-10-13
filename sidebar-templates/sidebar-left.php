@@ -2,7 +2,7 @@
 /**
  * The sidebar containing the main widget area
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.
@@ -13,7 +13,7 @@ if ( ! is_active_sidebar( 'left-sidebar' ) ) {
 }
 
 // when both sidebars turned on reduce col size to 3 from 4.
-$sidebar_pos = get_theme_mod( 'wssbase_sidebar_position' );
+$sidebar_pos = get_theme_mod( 'wsbase_sidebar_position' );
 ?>
 
 <?php if ( 'both' === $sidebar_pos ) : ?>
@@ -22,7 +22,7 @@ $sidebar_pos = get_theme_mod( 'wssbase_sidebar_position' );
 	<div class="col-md-4 widget-area" id="left-sidebar">
 <?php endif; ?>
 <?php 
-do_action( 'wssbase_left_sidebar' );	
+do_action( 'wsbase_left_sidebar' );	
 dynamic_sidebar( 'left-sidebar' ); 
 ?>
 

@@ -53,15 +53,15 @@ async function setLineEndings(filePath, newLineEnding) {
 async function buildAndZip() {
 	del("./dist").then(async () => {
 		console.log("./dist is deleted!");
-		await copyDir("./", "./dist/wssbase/wssbase");
+		await copyDir("./", "./dist/wsbase/wsbase");
 		// Set the desired line ending, e.g., "\n" for LF
-		await setLineEndings("./dist/wssbase/wssbase/js/theme.js", "\n");
+		await setLineEndings("./dist/wsbase/wsbase/js/theme.js", "\n");
 
 		// Create zip file name using version from package.json
 		const version = packageJson.version || "1.0.0"; // Default to '1.0.0' if version is not defined
-		const zipFileName = `./dist/wssbase-v${version}.zip`;
+		const zipFileName = `./dist/wsbase-v${version}.zip`;
 
-		zipdir("./dist/wssbase", { saveTo: zipFileName }).then(() => {
+		zipdir("./dist/wsbase", { saveTo: zipFileName }).then(() => {
 			console.log(`Zip file created: ${zipFileName}`);
 		});
 	});

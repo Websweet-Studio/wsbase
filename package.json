@@ -1,5 +1,5 @@
 {
-  "name": "wssbase",
+  "name": "wsbase",
   "version": "1.5.5",
   "description": "WordPress Theme Starter",
   "main": "index.js",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/websweetstudio/wssbase.git"
+    "url": "https://github.com/websweetstudio/wsbase.git"
   },
   "keywords": [
     "wordpress",
@@ -38,7 +38,7 @@
   "author": "websweetstudio.com",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/websweetstudio/wssbase/issues"
+    "url": "https://github.com/websweetstudio/wsbase/issues"
   },
   "homepage": "https://websweetstudio.com",
   "devDependencies": {

@@ -2,13 +2,13 @@
 /**
  * Rest in peace
  *
- * @package Wssbase
+ * @package Wsbase
  */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-if ( ! function_exists( 'wssbase_adjust_body_class' ) ) {
+if ( ! function_exists( 'wsbase_adjust_body_class' ) ) {
 	/**
 	 * Setup body classes.
 	 *
@@ -17,7 +17,7 @@ if ( ! function_exists( 'wssbase_adjust_body_class' ) ) {
 	 * @deprecated 0.9.4 Styling of tag has been removed in Bootstrap v4 Alpha 6.
 	 * @link https://github.com/twbs/bootstrap/issues/20939
 	 */
-	function wssbase_adjust_body_class( $classes ) {
+	function wsbase_adjust_body_class( $classes ) {
 
 		foreach ( $classes as $key => $value ) {
 			if ( 'tag' == $value ) {
@@ -30,7 +30,7 @@ if ( ! function_exists( 'wssbase_adjust_body_class' ) ) {
 	}
 }
 
-if ( ! function_exists( 'wssbase_slbd_count_widgets' ) ) {
+if ( ! function_exists( 'wsbase_slbd_count_widgets' ) ) {
 	/**
 	 * Count number of widgets in a sidebar
 	 * Used to add classes to widget areas so widgets can be displayed one, two, three or four per row
@@ -38,7 +38,7 @@ if ( ! function_exists( 'wssbase_slbd_count_widgets' ) ) {
 	 * @param int $sidebar_id The ID of the sidebar.
 	 * @deprecated 0.8.9
 	 */
-	function wssbase_slbd_count_widgets( $sidebar_id ) {
+	function wsbase_slbd_count_widgets( $sidebar_id ) {
 		// If loading from front page, consult $_wp_sidebars_widgets rather than options
 		// to see if wp_convert_widget_settings() has made manipulations in memory.
 		global $_wp_sidebars_widgets;
@@ -77,14 +77,14 @@ if ( ! function_exists( 'wssbase_slbd_count_widgets' ) ) {
  */
 function deprecated_translations() {
 	array(
-		__( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'wssbase' ),
-		__( 'Previous', 'wssbase' ),
-		__( 'Next', 'wssbase' ),
-		__( 'About:', 'wssbase' ),
-		__( 'Profile', 'wssbase' ),
-		__( 'Posts by', 'wssbase' ),
-		__( 'Permanent Link:', 'wssbase' ),
-		__( 'in', 'wssbase' ),
-		__( 'Edit', 'wssbase' ),
+		__( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'wsbase' ),
+		__( 'Previous', 'wsbase' ),
+		__( 'Next', 'wsbase' ),
+		__( 'About:', 'wsbase' ),
+		__( 'Profile', 'wsbase' ),
+		__( 'Posts by', 'wsbase' ),
+		__( 'Permanent Link:', 'wsbase' ),
+		__( 'in', 'wsbase' ),
+		__( 'Edit', 'wsbase' ),
 	);
 }

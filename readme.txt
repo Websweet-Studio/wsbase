@@ -1,4 +1,4 @@
-=== Wss Theme ===
+=== Ws Theme ===
 Contributors: @aadiityaak
 Requires at least: 4.7
 Tested up to: 6.3
@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-WssBase is a simple starter theme for WordPress that offers a clean 
+WsBase is a simple starter theme for WordPress that offers a clean
 and minimalist design, making it both user-friendly and highly customizable.
 
 == Changelog ==
@@ -29,8 +29,8 @@ Initial release
 
 == Copyright ==
 
-Wss Theme, Copyright 2021-2023 WebsweetStudio.com
-Wss Theme is distributed under the terms of the GNU GPL.
+Ws Theme, Copyright 2021-2023 WebsweetStudio.com
+Ws Theme is distributed under the terms of the GNU GPL.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
-Wss Theme bundles the following third-party resources:
+Ws Theme bundles the following third-party resources:
 
 Illustrations by @aadiityaak
 License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/

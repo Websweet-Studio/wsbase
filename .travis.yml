@@ -1,8 +1,8 @@
 # Travis CI configuration file.
 # @link https://travis-ci.org/
 
-# For use with the WssBase WordPress theme
-# @link https://github.com/websweetstudio/wssbase
+# For use with the WsBase WordPress theme
+# @link https://github.com/websweetstudio/wsbase
 
 # Declare virtual environment and operating system.
 # @link https://docs.travis-ci.com/user/reference/overview/#virtualization-environments
