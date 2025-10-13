@@ -16,10 +16,10 @@ $container = get_theme_mod( 'wsbase_container_type' );
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-		<div class="row justify-content-center">
+		<div class="row">
 
-			<!-- Optimal reading width aligned with navbar -->
-			<div class="col-lg-10 col-xl-8">
+			<!-- Use sidebar system for single posts -->
+			<?php get_template_part('global-templates/left-sidebar-check'); ?>
 
 			<main class="site-main" id="main">
 
@@ -38,7 +38,8 @@ $container = get_theme_mod( 'wsbase_container_type' );
 
 			</main><!-- #main -->
 
-			</div><!-- .col-lg-10 col-xl-8 -->
+			<!-- Do the right sidebar check -->
+			<?php get_template_part('global-templates/right-sidebar-check'); ?>
 
 		</div><!-- .row -->
 

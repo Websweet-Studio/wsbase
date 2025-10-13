@@ -25,20 +25,8 @@ $container = get_theme_mod( 'wsbase_container_type' );
 
 		<div class="row">
 
-			<!-- Check for static pages that might need sidebar -->
-			<?php
-			// Check if this page should have sidebar based on customizer setting
-			$sidebar_pos = get_theme_mod( 'wsbase_sidebar_position' );
-			$has_sidebar = in_array($sidebar_pos, ['left', 'both']) && !is_front_page();
-			?>
-
-			<?php if ($has_sidebar) : ?>
-				<!-- Do the left sidebar check -->
-				<?php get_template_part('global-templates/left-sidebar-check'); ?>
-			<?php else : ?>
-				<!-- Full width for pages without sidebar -->
-				<div class="col-lg-10 col-xl-8 mx-auto">
-			<?php endif; ?>
+			<!-- Use sidebar system for pages by default -->
+			<?php get_template_part('global-templates/left-sidebar-check'); ?>
 
 			<main class="site-main" id="main">
 
@@ -56,13 +44,8 @@ $container = get_theme_mod( 'wsbase_container_type' );
 
 			</main><!-- #main -->
 
-			<?php if ($has_sidebar) : ?>
-				<!-- Do the right sidebar check -->
-				<?php get_template_part('global-templates/right-sidebar-check'); ?>
-			<?php else : ?>
-				<!-- Close full width page layout -->
-				</div><!-- .col-lg-10 col-xl-8 -->
-			<?php endif; ?>
+			<!-- Do the right sidebar check -->
+			<?php get_template_part('global-templates/right-sidebar-check'); ?>
 
 		</div><!-- .row -->
 

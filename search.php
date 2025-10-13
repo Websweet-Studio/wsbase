@@ -18,10 +18,21 @@ $container = get_theme_mod( 'wsbase_container_type' );
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
-		<div class="row justify-content-center">
+		<div class="row">
 
-			<!-- Full width search layout -->
-			<div class="col-lg-10 col-xl-8">
+			<!-- Check if search should have sidebar -->
+			<?php
+			$sidebar_pos = get_theme_mod('wsbase_sidebar_position');
+			$has_sidebar = in_array($sidebar_pos, ['left', 'both']) && !is_front_page();
+			?>
+
+			<?php if ($has_sidebar) : ?>
+				<!-- Do the left sidebar check -->
+				<?php get_template_part('global-templates/left-sidebar-check'); ?>
+			<?php else : ?>
+				<!-- Full width for search -->
+				<div class="col-lg-10 col-xl-8 mx-auto">
+			<?php endif; ?>
 
 			<main class="site-main" id="main">
 
@@ -66,7 +77,13 @@ $container = get_theme_mod( 'wsbase_container_type' );
 			<!-- The pagination component -->
 			<?php wsbase_pagination(); ?>
 
-			</div><!-- .col-lg-10 col-xl-8 -->
+			<?php if ($has_sidebar) : ?>
+				<!-- Do the right sidebar check -->
+				<?php get_template_part('global-templates/right-sidebar-check'); ?>
+			<?php else : ?>
+				<!-- Close full width search layout -->
+				</div><!-- .col-lg-10 col-xl-8 -->
+			<?php endif; ?>
 
 		</div><!-- .row -->
 

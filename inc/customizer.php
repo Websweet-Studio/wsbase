@@ -169,7 +169,7 @@ if (! function_exists('wsbase_theme_customize_register')) {
 			array(
 				'default'           => 'right',
 				'type'              => 'theme_mod',
-				'sanitize_callback' => 'sanitize_text_field',
+				'sanitize_callback' => 'wsbase_theme_slug_sanitize_select',
 				'capability'        => 'edit_theme_options',
 			)
 		);
