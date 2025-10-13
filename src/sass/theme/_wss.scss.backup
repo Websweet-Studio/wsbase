@@ -516,11 +516,6 @@ a.skip-link {
 					.entry-meta-footer {
 						.cat-links,
 						.tags-links {
-						}
-					}
-				}
-			}
-
 // Modern Card Layout Styling (matching screenshot design)
 .modern-card {
 	background: #fff;
