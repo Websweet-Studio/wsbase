@@ -4,45 +4,45 @@
 
 $link-decoration: none; // remove text decoration link
 
-// Clean Modern Color Palette
-$primary: #0f766e;        // Modern teal/green
-$primary-light: #14b8a6;  // Lighter primary
-$primary-dark: #115e59;   // Darker primary
+// Modern Professional Color Palette (Best UI/UX Practice)
+$primary: #0ea5e9;         // Blue 500 - Trust, Professional, Modern
+$primary-light: #38bdf8;   // Blue 400 - Lighter hover states
+$primary-dark: #0284c7;    // Blue 600 - Active states
 
-$secondary: #64748b;      // Modern gray
-$secondary-light: #94a3b8; // Lighter secondary
-$secondary-dark: #475569;  // Darker secondary
+$secondary: #64748b;       // Slate 500 - Professional secondary
+$secondary-light: #94a3b8; // Slate 400 - Light secondary
+$secondary-dark: #475569;  // Slate 600 - Dark secondary
 
-$success: #16a34a;        // Modern green
-$info: #0891b2;           // Modern blue
-$warning: #d97706;        // Modern orange
-$danger: #dc2626;         // Modern red
+$success: #10b981;         // Emerald 500 - Success states
+$info: #06b6d4;            // Cyan 500 - Information
+$warning: #f59e0b;         // Amber 500 - Warning states
+$danger: #ef4444;          // Red 500 - Error states
 
-// Neutral Colors for Clean Design
+// Neutral Colors - Based on Tailwind CSS Slate Scale
 $white: #ffffff;
-$gray-50: #f8fafc;
-$gray-100: #f1f5f9;
-$gray-200: #e2e8f0;
-$gray-300: #cbd5e1;
-$gray-400: #94a3b8;
-$gray-500: #64748b;
-$gray-600: #475569;
-$gray-700: #334155;
-$gray-800: #1e293b;
-$gray-900: #0f172a;
+$gray-50: #f8fafc;         // Slate 50 - Cleanest light
+$gray-100: #f1f5f9;        // Slate 100 - Light backgrounds
+$gray-200: #e2e8f0;        // Slate 200 - Borders
+$gray-300: #cbd5e1;        // Slate 300 - Disabled states
+$gray-400: #94a3b8;        // Slate 400 - Muted text
+$gray-500: #64748b;        // Slate 500 - Secondary text
+$gray-600: #475569;        // Slate 600 - Darker secondary
+$gray-700: #334155;        // Slate 700 - Dark text
+$gray-800: #1e293b;        // Slate 800 - Primary text
+$gray-900: #0f172a;        // Slate 900 - Darkest accents
 $black: #000000;
 
-// Semantic Colors
-$text-primary: #0f172a;    // Main text color
-$text-secondary: #64748b;  // Secondary text
-$text-muted: #94a3b8;      // Muted text
-$text-light: #f1f5f9;      // Light text on dark backgrounds
+// Semantic Colors for Better UX
+$text-primary: #1e293b;     // Slate 800 - High contrast for readability
+$text-secondary: #64748b;   // Slate 500 - Perfect secondary contrast
+$text-muted: #94a3b8;       // Slate 400 - Meta information
+$text-light: #f1f5f9;       // Slate 100 - Text on dark backgrounds
 
-$border-color: #e2e8f0;    // Clean borders
-$border-light: #f1f5f9;    // Lighter borders
+$border-color: #e2e8f0;     // Slate 200 - Subtle, professional borders
+$border-light: #f1f5f9;     // Slate 100 - Barely visible borders
 
-$background-light: #f8fafc; // Light backgrounds
-$background-white: #ffffff; // White backgrounds
+$background-light: #f8fafc; // Slate 50 - Clean, fresh backgrounds
+$background-white: #ffffff; // Pure white for cards
 
 // Link Colors
 $link-color: $primary;
