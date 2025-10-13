@@ -409,23 +409,23 @@ a.skip-link {
 			font-family: "Space Grotesk", sans-serif;
 			font-weight: 500;
 			color: #666;
-			border: 1px solid #e5e7eb;
+			border: 1px solid $border-color;
 			padding: 8px 16px;
 			margin: 0 4px;
 			border-radius: 8px;
 			transition: all 0.2s ease;
 
 			&:hover {
-				background-color: #f8f9fa;
-				border-color: #d1d5db;
-				color: #000;
+				background-color: $background-light;
+				border-color: $border-color;
+				color: $text-primary;
 			}
 		}
 
 		.page-item.active .page-link {
-			background-color: #000;
-			border-color: #000;
-			color: #fff;
+			background-color: $gray-900;
+			border-color: $gray-900;
+			color: $white;
 		}
 	}
 }
@@ -709,23 +709,23 @@ a.skip-link {
 			font-family: "Space Grotesk", sans-serif;
 			font-weight: 500;
 			color: #666;
-			border: 1px solid #e5e7eb;
+			border: 1px solid $border-color;
 			padding: 8px 16px;
 			margin: 0 4px;
 			border-radius: 8px;
 			transition: all 0.2s ease;
 
 			&:hover {
-				background-color: #f8f9fa;
-				border-color: #d1d5db;
-				color: #000;
+				background-color: $background-light;
+				border-color: $border-color;
+				color: $text-primary;
 			}
 		}
 
 		.page-item.active .page-link {
-			background-color: #000;
-			border-color: #000;
-			color: #fff;
+			background-color: $gray-900;
+			border-color: $gray-900;
+			color: $white;
 		}
 	}
 }
@@ -768,23 +768,23 @@ a.skip-link {
 			font-family: "Space Grotesk", sans-serif;
 			font-weight: 500;
 			color: #666;
-			border: 1px solid #e5e7eb;
+			border: 1px solid $border-color;
 			padding: 8px 16px;
 			margin: 0 4px;
 			border-radius: 8px;
 			transition: all 0.2s ease;
 
 			&:hover {
-				background-color: #f8f9fa;
-				border-color: #d1d5db;
-				color: #000;
+				background-color: $background-light;
+				border-color: $border-color;
+				color: $text-primary;
 			}
 		}
 
 		.page-item.active .page-link {
-			background-color: #000;
-			border-color: #000;
-			color: #fff;
+			background-color: $gray-900;
+			border-color: $gray-900;
+			color: $white;
 		}
 	}
 }
@@ -881,7 +881,7 @@ a.skip-link {
 			display: flex;
 			align-items: center;
 			gap: 8px;
-			font-size: 12px;
+			font-size: 0.8125rem; // 13px - minimum readable size
 			font-weight: 600;
 			text-transform: uppercase;
 			letter-spacing: 0.5px;
@@ -896,10 +896,10 @@ a.skip-link {
 		}
 
 		.nav-title {
-			font-size: 16px;
+			font-size: 1rem; // 16px
 			font-weight: 600;
 			line-height: 1.4;
-			color: #000;
+			color: $text-primary;
 			margin-bottom: 6px;
 			font-family: "Space Grotesk", sans-serif;
 			transition: color 0.3s ease;
@@ -911,8 +911,8 @@ a.skip-link {
 		}
 
 		.nav-date {
-			font-size: 13px;
-			color: #666;
+			font-size: 0.8125rem; // 13px
+			color: $text-secondary;
 			font-weight: 400;
 		}
 	}
@@ -1003,11 +1003,11 @@ a.skip-link {
 			}
 
 			.nav-title {
-				font-size: 14px;
+				font-size: 0.9375rem; // 15px
 			}
 
 			.nav-label {
-				font-size: 11px;
+				font-size: 0.75rem; // 12px - minimum for mobile
 			}
 		}
 	}

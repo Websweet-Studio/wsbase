@@ -9,29 +9,46 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class( 'modern-single-post' ); ?> id="post-<?php the_ID(); ?>">
 
-	<header class="entry-header">
+	<!-- Featured Image -->
+	<?php if ( has_post_thumbnail() ) : ?>
+		<div class="post-hero-image">
+			<?php
+			the_post_thumbnail( 'large', array(
+				'class' => 'img-fluid w-100',
+				'alt' => get_the_title()
+			) );
+			?>
+		</div>
+	<?php endif; ?>
 
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+	<div class="post-content-wrapper">
 
-	</header><!-- .entry-header -->
+		<!-- Page Header -->
+		<header class="post-header">
 
-	<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
+			<?php the_title( '<h1 class="post-title">', '</h1>' ); ?>
 
-	<div class="entry-content">
+		</header><!-- .post-header -->
 
-		<?php
-		the_content();
-		wsbase_link_pages();
-		?>
+		<!-- Page Content -->
+		<div class="post-content">
 
-	</div><!-- .entry-content -->
+			<?php
+			the_content();
+			wsbase_link_pages();
+			?>
 
-	<footer class="entry-footer">
+		</div><!-- .post-content -->
 
-		<?php wsbase_edit_post_link(); ?>
+		<!-- Page Footer -->
+		<footer class="post-footer">
 
-	</footer><!-- .entry-footer -->
+			<?php wsbase_edit_post_link(); ?>
+
+		</footer><!-- .post-footer -->
+
+	</div><!-- .post-content-wrapper -->
 
 </article><!-- #post-## -->

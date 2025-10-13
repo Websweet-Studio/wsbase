@@ -4,18 +4,54 @@
 
 $link-decoration: none; // remove text decoration link
 
-$primary: #50af9b;
-$secondary: #8898aa;
-$success: #2dce89;
-$info: #11cdef;
-$warning: #fb6340;
-$danger: #f5365c;
-$light: #ced4da;
-$dark: #000;
+// Clean Modern Color Palette
+$primary: #0f766e;        // Modern teal/green
+$primary-light: #14b8a6;  // Lighter primary
+$primary-dark: #115e59;   // Darker primary
 
-$navbar-light-color: rgba($dark, 0.8) !default;
+$secondary: #64748b;      // Modern gray
+$secondary-light: #94a3b8; // Lighter secondary
+$secondary-dark: #475569;  // Darker secondary
 
-$nav-link-font-weight: medium; // Replace bootstrap's default font weight.
+$success: #16a34a;        // Modern green
+$info: #0891b2;           // Modern blue
+$warning: #d97706;        // Modern orange
+$danger: #dc2626;         // Modern red
+
+// Neutral Colors for Clean Design
+$white: #ffffff;
+$gray-50: #f8fafc;
+$gray-100: #f1f5f9;
+$gray-200: #e2e8f0;
+$gray-300: #cbd5e1;
+$gray-400: #94a3b8;
+$gray-500: #64748b;
+$gray-600: #475569;
+$gray-700: #334155;
+$gray-800: #1e293b;
+$gray-900: #0f172a;
+$black: #000000;
+
+// Semantic Colors
+$text-primary: #0f172a;    // Main text color
+$text-secondary: #64748b;  // Secondary text
+$text-muted: #94a3b8;      // Muted text
+$text-light: #f1f5f9;      // Light text on dark backgrounds
+
+$border-color: #e2e8f0;    // Clean borders
+$border-light: #f1f5f9;    // Lighter borders
+
+$background-light: #f8fafc; // Light backgrounds
+$background-white: #ffffff; // White backgrounds
+
+// Link Colors
+$link-color: $primary;
+$link-hover-color: $primary-dark;
+$link-decoration: none !important;
+
+$navbar-light-color: rgba($text-primary, 0.8) !default;
+
+$nav-link-font-weight: 500; // Medium weight for better readability
 $navbar-nav-link-padding-x: 1rem !default; // padding-left and padding-right
-$navbar-toggler-border-radius: 0 !default;
-$dropdown-item-padding-y: 0.8rem !default; // padding-top and padding-bottom
+$navbar-toggler-border-radius: 8px !default; // Modern border radius
+$dropdown-item-padding-y: 0.75rem !default; // Better vertical padding
