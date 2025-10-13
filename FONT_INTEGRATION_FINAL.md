@@ -69,7 +69,7 @@ h6,
 ## File yang Dimodifikasi
 
 1. **`inc/customizer.php`** - Menambahkan Inter, mengubah default body ke Inter
-2. **`src/sass/theme/_wss.scss`** - CSS untuk dual font system
+2. **`src/sass/theme/_ws.scss`** - CSS untuk dual font system
 3. **`inc/enqueue.php`** - Loading kedua Google Fonts
 
 ## Hasil Akhir

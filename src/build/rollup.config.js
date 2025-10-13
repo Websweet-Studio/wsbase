@@ -40,7 +40,7 @@ module.exports = {
 		file: path.resolve(__dirname, `../../js/${fileDest}`),
 		format: "umd",
 		globals,
-		name: "wss",
+		name: "ws",
 	},
 	external,
 	plugins,

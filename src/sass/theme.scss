@@ -1,6 +1,6 @@
 @import "theme/theme_variables"; // <-------- Add your variables into this file. Also add variables to overwrite Bootstrap or variables here
-@import "assets/bootstrap/bootstrap"; // <-------- Loads 
-@import "theme/wss"; // <-------- Loads the defaults. Just a few classes to incorporate BS in WP
+@import "assets/bootstrap/bootstrap"; // <-------- Loads
+@import "theme/ws"; // <-------- Loads the defaults. Just a few classes to incorporate BS in WP
 @import "theme/colors"; // <-------- This creates the necessary bootstrap color classes.
 @import "theme/blocks"; // <-------- This adds Bootstrap styles to blocks.
 @import "theme/contact-form7"; // <-------- Contact Form 7 - Bootstrap 4 support

@@ -35,7 +35,7 @@
    - Mengubah default font settings
    - Menambahkan CSS khusus untuk menu
 
-2. **`src/sass/theme/_wss.scss`**
+2. **`src/sass/theme/_ws.scss`**
 
    - Menambahkan styling khusus untuk navbar dan menu
    - Memastikan konsistensi font family di seluruh navigasi

@@ -1,12 +1,12 @@
 /*!
-  * Wss Base  v1.5.5 (https://websweetstudio.com)
+  * Ws Base  v1.5.5 (https://websweetstudio.com)
   * Copyright 2013-2025 websweetstudio.com
   * Licensed under GPL (http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
   */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.wss = {}));
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.ws = {}));
 })(this, (function (exports) { 'use strict';
 
 	var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
