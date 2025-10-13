@@ -15385,4 +15385,34 @@ figure.woocommerce-product-gallery__wrapper {
   }
 }
 
+body.fl-theme-builder-active #wrapper-navbar {
+  display: none;
+}
+body.fl-theme-builder-active #wrapper-footer {
+  display: none;
+}
+body.fl-theme-builder-active .fl-theme-builder-header {
+  position: relative;
+  z-index: 1000;
+  background: transparent;
+}
+body.fl-theme-builder-active .fl-theme-builder-footer {
+  position: relative;
+  z-index: 100;
+}
+body.fl-theme-builder-active .fl-node-uabb- img {
+  height: auto !important;
+}
+
+.elementor-location-header ~ #wrapper-navbar,
+.elementor-location-footer ~ #wrapper-footer {
+  display: none;
+}
+
+body.fl-builder-active .navbar,
+body.fl-builder-active footer {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 /*# sourceMappingURL=theme.css.map */

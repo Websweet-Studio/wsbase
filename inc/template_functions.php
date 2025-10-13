@@ -44,6 +44,20 @@ if( ! function_exists( 'wsbase_add_navbar' ) ) {
 	 * Add navbar.
 	 */
 	function wsbase_add_navbar() {
+		// Auto-detect Beaver Builder (BB + UAB + Themer)
+		if (class_exists('FLBuilder') && class_exists('FLThemeBuilderLoader')) {
+			// Silently hide theme navbar - let Themer take control
+			return;
+		}
+
+		// Elementor fallback
+		if (function_exists('elementor_theme_do_location')) {
+			if (elementor_theme_do_location('header')) {
+				return;
+			}
+		}
+
+		// Default theme header (untuk non-builder sites)
 		$header_position   = get_theme_mod( 'wsbase_header_position', 'position-relative' );
 		?>
 
@@ -51,7 +65,7 @@ if( ! function_exists( 'wsbase_add_navbar' ) ) {
 
 			<a class="visually-hidden-focusable" href="#content"><?php esc_html_e( 'Skip to content', 'wsbase' ); ?></a>
 
-			<?php 
+			<?php
 				do_action( 'wsbase_navbar' );
 			?>
 
@@ -66,6 +80,20 @@ if( ! function_exists( 'wsbase_add_footer' ) ) {
 	 * Add footer.
 	 */
 	function wsbase_add_footer() {
+		// Auto-detect Beaver Builder (BB + UAB + Themer)
+		if (class_exists('FLBuilder') && class_exists('FLThemeBuilderLoader')) {
+			// Silently hide theme footer - let Themer take control
+			return;
+		}
+
+		// Elementor fallback
+		if (function_exists('elementor_theme_do_location')) {
+			if (elementor_theme_do_location('footer')) {
+				return;
+			}
+		}
+
+		// Default theme footer (untuk non-builder sites)
 		$container = get_theme_mod( 'wsbase_container_type' );
 		?>
 		<div class="wrapper-footer" id="wrapper-footer">

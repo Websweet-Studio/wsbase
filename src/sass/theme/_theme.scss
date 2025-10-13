@@ -694,3 +694,50 @@ figure {
 		}
 	}
 }
+
+// Builder Compatibility (Beaver Builder + Elementor)
+// Beaver Builder (BB + UAB + Themer) priority
+body.fl-theme-builder-active {
+	#wrapper-navbar {
+		display: none;
+	}
+
+	#wrapper-footer {
+		display: none;
+	}
+
+	// Ensure Beaver Themer content is properly positioned
+	.fl-theme-builder-header {
+		position: relative;
+		z-index: 1000;
+		background: transparent;
+	}
+
+	.fl-theme-builder-footer {
+		position: relative;
+		z-index: 100;
+	}
+
+	// UAB compatibility fixes
+	.fl-node-uabb- {
+		img {
+			height: auto !important;
+		}
+	}
+}
+
+// Elementor fallback support
+.elementor-location-header ~ #wrapper-navbar,
+.elementor-location-footer ~ #wrapper-footer {
+	display: none;
+}
+
+// Additional builder-specific fixes
+body.fl-builder-active {
+	// Hide theme elements during builder editing
+	.navbar,
+	footer {
+		opacity: 0.3;
+		pointer-events: none;
+	}
+}
