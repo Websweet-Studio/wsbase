@@ -15851,7 +15851,17 @@ body.fl-builder-active footer {
 #single-wrapper .modern-single-post .post-content {
   margin-bottom: 3rem;
 }
-#single-wrapper .modern-single-post .post-content h1, #single-wrapper .modern-single-post .post-content .h1, #single-wrapper .modern-single-post .post-content h2, #single-wrapper .modern-single-post .post-content .h2, #single-wrapper .modern-single-post .post-content h3, #single-wrapper .modern-single-post .post-content .h3, #single-wrapper .modern-single-post .post-content h4, #single-wrapper .modern-single-post .post-content .h4, #single-wrapper .modern-single-post .post-content h5, #single-wrapper .modern-single-post .post-content .h5, #single-wrapper .modern-single-post .post-content h6, #single-wrapper .modern-single-post .post-content .h6 {
+#single-wrapper .modern-single-post .post-content h1, #single-wrapper .modern-single-post .post-content .h1,
+#single-wrapper .modern-single-post .post-content h2,
+#single-wrapper .modern-single-post .post-content .h2,
+#single-wrapper .modern-single-post .post-content h3,
+#single-wrapper .modern-single-post .post-content .h3,
+#single-wrapper .modern-single-post .post-content h4,
+#single-wrapper .modern-single-post .post-content .h4,
+#single-wrapper .modern-single-post .post-content h5,
+#single-wrapper .modern-single-post .post-content .h5,
+#single-wrapper .modern-single-post .post-content h6,
+#single-wrapper .modern-single-post .post-content .h6 {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
   color: #000;
@@ -15859,7 +15869,17 @@ body.fl-builder-active footer {
   margin-bottom: 1.5rem;
   line-height: 1.3;
 }
-#single-wrapper .modern-single-post .post-content h1:first-child, #single-wrapper .modern-single-post .post-content .h1:first-child, #single-wrapper .modern-single-post .post-content h2:first-child, #single-wrapper .modern-single-post .post-content .h2:first-child, #single-wrapper .modern-single-post .post-content h3:first-child, #single-wrapper .modern-single-post .post-content .h3:first-child, #single-wrapper .modern-single-post .post-content h4:first-child, #single-wrapper .modern-single-post .post-content .h4:first-child, #single-wrapper .modern-single-post .post-content h5:first-child, #single-wrapper .modern-single-post .post-content .h5:first-child, #single-wrapper .modern-single-post .post-content h6:first-child, #single-wrapper .modern-single-post .post-content .h6:first-child {
+#single-wrapper .modern-single-post .post-content h1:first-child, #single-wrapper .modern-single-post .post-content .h1:first-child,
+#single-wrapper .modern-single-post .post-content h2:first-child,
+#single-wrapper .modern-single-post .post-content .h2:first-child,
+#single-wrapper .modern-single-post .post-content h3:first-child,
+#single-wrapper .modern-single-post .post-content .h3:first-child,
+#single-wrapper .modern-single-post .post-content h4:first-child,
+#single-wrapper .modern-single-post .post-content .h4:first-child,
+#single-wrapper .modern-single-post .post-content h5:first-child,
+#single-wrapper .modern-single-post .post-content .h5:first-child,
+#single-wrapper .modern-single-post .post-content h6:first-child,
+#single-wrapper .modern-single-post .post-content .h6:first-child {
   margin-top: 0;
 }
 #single-wrapper .modern-single-post .post-content h1, #single-wrapper .modern-single-post .post-content .h1 {
@@ -15901,11 +15921,13 @@ body.fl-builder-active footer {
   font-size: 1.125rem;
   color: #374151;
 }
-#single-wrapper .modern-single-post .post-content ul, #single-wrapper .modern-single-post .post-content ol {
+#single-wrapper .modern-single-post .post-content ul,
+#single-wrapper .modern-single-post .post-content ol {
   margin-bottom: 1.5rem;
   padding-left: 2rem;
 }
-#single-wrapper .modern-single-post .post-content ul li, #single-wrapper .modern-single-post .post-content ol li {
+#single-wrapper .modern-single-post .post-content ul li,
+#single-wrapper .modern-single-post .post-content ol li {
   margin-bottom: 0.5rem;
   line-height: 1.8;
   color: #4b5563;
@@ -16470,9 +16492,8 @@ body.fl-builder-active footer {
 }
 
 .modern-post-navigation {
-  padding: 3rem 0;
+  padding: 1rem 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  border-top: 1px solid #e5e7eb;
 }
 .modern-post-navigation .container {
   max-width: none;
