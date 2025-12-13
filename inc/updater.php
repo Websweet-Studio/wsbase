@@ -12,8 +12,8 @@ if (file_exists($autoload)) {
     return;
 }
 
-$themeDir = get_template_directory();
-$themeSlug = wp_get_theme()->get_stylesheet();
+$themeDir = get_stylesheet_directory();
+$themeSlug = get_stylesheet();
 
 if (class_exists('\\YahnisElsts\\PluginUpdateChecker\\v5\\PucFactory')) {
     $updateChecker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
@@ -34,5 +34,9 @@ if (class_exists('\\YahnisElsts\\PluginUpdateChecker\\v5\\PucFactory')) {
 $api = $updateChecker->getVcsApi();
 if ($api) {
     $api->enableReleaseAssets();
-    $updateChecker->setBranch('main');
+    $updateChecker->setBranch('master');
 }
+
+add_action('admin_init', function () use ($updateChecker) {
+    $updateChecker->checkForUpdates();
+});
