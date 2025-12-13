@@ -30,6 +30,7 @@ $wsbase_includes = array(
 	'/block-editor.php',                    // Load Block Editor functions.
 	'/deprecated.php',                      // Load deprecated functions.
 	'/beaver-builder.php',                  // Load Beaver Builder functions.
+	'/updater.php',
 );
 
 // Load WooCommerce functions if WooCommerce is activated.
