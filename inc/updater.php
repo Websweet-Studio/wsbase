@@ -1,6 +1,10 @@
 <?php
 defined('ABSPATH') || exit;
 
+if (!is_admin() && !(defined('DOING_CRON') && DOING_CRON) && !(defined('WP_CLI') && WP_CLI)) {
+    return;
+}
+
 $repoUrl = 'https://github.com/Websweet-Studio/wsbase/';
 $repoApiLatestRelease = 'https://api.github.com/repos/Websweet-Studio/wsbase/releases/latest';
 
