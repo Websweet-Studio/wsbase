@@ -46,6 +46,8 @@ if ( ! function_exists( 'wsbase_setup' ) ) {
 		register_nav_menus(
 			array(
 				'primary' => __( 'Primary Menu', 'wsbase' ),
+				'footer'  => __( 'Footer Menu', 'wsbase' ),
+				'footer-bottom' => __( 'Footer Bottom Menu', 'wsbase' ),
 			)
 		);
 
@@ -103,10 +105,7 @@ if ( ! function_exists( 'wsbase_setup' ) ) {
 		add_theme_support( 'fl-theme-builder-parts' );
 		
 		// Add theme support to block styles
-		add_theme_support( "wp-block-styles" );
-
-		// Add theme support to html5
-		add_theme_support( "html5", array( "search-form", "comment-form", "comment-list", "gallery", "caption" ) );
+		add_theme_support( 'wp-block-styles' );
 
 		// Check and setup theme default settings.
 		wsbase_setup_theme_default_settings();

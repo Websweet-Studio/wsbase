@@ -18,18 +18,26 @@ if (! function_exists('wsbase_scripts')) {
 		// Get the theme data.
 		$the_theme         = wp_get_theme();
 		$theme_version     = $the_theme->get('Version');
-		$suffix            = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.min' : '.min';
+		$suffix            = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
 		// Grab asset urls.
 		$theme_styles  = "/css/theme{$suffix}.css";
 		$theme_scripts = "/js/theme{$suffix}.js";
 
-		$css_version = $theme_version . '.' . filemtime(get_template_directory() . $theme_styles);
+		$css_version = $theme_version;
+		$css_path    = get_template_directory() . $theme_styles;
+		if ( file_exists( $css_path ) ) {
+			$css_version .= '.' . filemtime( $css_path );
+		}
 		wp_enqueue_style('wsbase-styles', get_template_directory_uri() . $theme_styles, array(), $css_version);
 
 		wp_enqueue_script('jquery');
 
-		$js_version = $theme_version . '.' . filemtime(get_template_directory() . $theme_scripts);
+		$js_version = $theme_version;
+		$js_path    = get_template_directory() . $theme_scripts;
+		if ( file_exists( $js_path ) ) {
+			$js_version .= '.' . filemtime( $js_path );
+		}
 		wp_enqueue_script('wsbase-scripts', get_template_directory_uri() . $theme_scripts, array(), $js_version, true);
 		if (is_singular() && comments_open() && get_option('thread_comments')) {
 			wp_enqueue_script('comment-reply');

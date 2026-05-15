@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php
 			the_post_thumbnail( 'large', array(
 				'class' => 'img-fluid w-100',
-				'alt' => get_the_title()
+				'alt' => esc_attr( get_the_title() )
 			) );
 			?>
 		</div>
@@ -147,7 +147,7 @@ defined( 'ABSPATH' ) || exit;
 				</div>
 				<div class="author-bio-content">
 					<h4 class="author-bio-name"><?php the_author(); ?></h4>
-					<p class="author-bio-description"><?php echo get_the_author_meta( 'description' ); ?></p>
+					<p class="author-bio-description"><?php echo esc_html( get_the_author_meta( 'description' ) ); ?></p>
 					<div class="author-social">
 						<?php
 						$author_email = get_the_author_meta( 'email' );

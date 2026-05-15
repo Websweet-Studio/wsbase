@@ -19,13 +19,14 @@ defined( 'ABSPATH' ) || exit;
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?> <?php wsbase_body_attributes(); ?>>
+	<?php do_action( 'wp_body_open' ); ?>
 	<?php
 	while ( have_posts() ) {
 		the_post();
 		get_template_part( 'loop-templates/content', 'blank' );
 	}
-	wp_footer();
 	?>
+	<?php wp_footer(); ?>
 </body>
 </html>

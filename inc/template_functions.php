@@ -227,8 +227,15 @@ if (!function_exists('wsbase_color_scheme')) {
 	 */
 	function wsbase_color_scheme()
 	{
-		$color_scheme = isset($_COOKIE["color_scheme"]) ? $_COOKIE["color_scheme"] : 'light';
-		echo 'data-bs-theme="' . $color_scheme . '"';
+		$color_scheme = 'light';
+		if ( isset( $_COOKIE['color_scheme'] ) ) {
+			$candidate = sanitize_key( wp_unslash( $_COOKIE['color_scheme'] ) );
+			if ( in_array( $candidate, array( 'light', 'dark' ), true ) ) {
+				$color_scheme = $candidate;
+			}
+		}
+
+		echo 'data-bs-theme="' . esc_attr( $color_scheme ) . '"';
 	}
 }
 

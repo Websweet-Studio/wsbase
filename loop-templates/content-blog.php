@@ -25,9 +25,9 @@ defined('ABSPATH') || exit;
       <div class="card-meta">
         <?php if ('post' === get_post_type()) : ?>
           <div class="post-author">
-            <span class="author-name"><?php echo get_the_author(); ?></span>
+            <span class="author-name"><?php echo esc_html( get_the_author() ); ?></span>
             <span class="post-separator">•</span>
-            <span class="post-date"><?php echo get_the_date('j M Y'); ?></span>
+            <span class="post-date"><?php echo esc_html( get_the_date( 'j M Y' ) ); ?></span>
           </div>
         <?php endif; ?>
       </div>
@@ -46,9 +46,10 @@ defined('ABSPATH') || exit;
         // Get custom excerpt or trimmed content
         $excerpt = get_the_excerpt();
         if (empty($excerpt)) {
-          $excerpt = wp_trim_words(get_the_content(), 20, '...');
+          $excerpt = wp_trim_words( wp_strip_all_tags( get_the_content() ), 20, '...' );
         }
-        echo '<p>' . $excerpt . '</p>';
+        $excerpt = wp_strip_all_tags( $excerpt );
+        echo '<p>' . esc_html( $excerpt ) . '</p>';
         ?>
       </div>
 
