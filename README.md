@@ -24,15 +24,34 @@ npm run dist
 npm run build
 ```
 
+```bash
+npm run package
+```
+
 ## Features
 
 - Clean and simple theme.
 - Easy to use and easy to customize.
 - Responsive design.
 - Customizer support.
+- Header & Footer Builder (Customizer).
 - Beaver Builder support.
 - WooCommerce support.
 - Bootstrap 5 support.
+
+## Auto Release (GitHub)
+
+This repository includes an auto-release workflow that creates a new GitHub Release when the theme version is higher than the latest release tag.
+
+- Workflow: `.github/workflows/auto-release.yml`
+- Trigger: push to `main` or `master`
+- Steps: `npm ci` → `npm run package` → upload `dist/wsbase-v{version}.zip` as a new Release
+
+To publish a new release:
+
+- Bump `version` in `package.json`
+- Bump `Version` in `style.css`
+- Push to GitHub
 
 ## Credits
 
