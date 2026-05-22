@@ -631,7 +631,14 @@ if (!function_exists('wsbase_render_admin_page')) {
         echo '</div>';
 
         echo '<div class="wsbase-wps-actions" style="padding:0;">';
-        if ($storeInstalled && !$storeActive && $storeFile !== '') {
+        if (!$storeInstalled) {
+            echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
+            echo '<input type="hidden" name="action" value="wsbase_install_wp_store">';
+            wp_nonce_field('wsbase_install_wp_store');
+            echo '<button class="wp-store-btn wp-store-btn-primary" type="submit">Install</button>';
+            echo '</form>';
+            echo '<a class="wp-store-btn wp-store-btn-secondary" href="' . esc_url(admin_url('plugins.php')) . '">Kelola Plugin</a>';
+        } elseif ($storeInstalled && !$storeActive && $storeFile !== '') {
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             echo '<input type="hidden" name="action" value="wsbase_activate_wp_store">';
             wp_nonce_field('wsbase_activate_wp_store');
@@ -667,6 +674,7 @@ if (!function_exists('wsbase_render_admin_page')) {
             wp_nonce_field('wsbase_install_sweetaddons');
             echo '<button class="wp-store-btn wp-store-btn-primary" type="submit">Install</button>';
             echo '</form>';
+            echo '<a class="wp-store-btn wp-store-btn-secondary" href="' . esc_url(admin_url('plugins.php')) . '">Kelola Plugin</a>';
         } elseif (!$sweetActive) {
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             echo '<input type="hidden" name="action" value="wsbase_activate_sweetaddons">';
@@ -826,6 +834,54 @@ if (!function_exists('wsbase_admin_post_install_sweetaddons')) {
     }
 }
 add_action('admin_post_wsbase_install_sweetaddons', 'wsbase_admin_post_install_sweetaddons');
+
+if (!function_exists('wsbase_admin_post_install_wp_store')) {
+    function wsbase_admin_post_install_wp_store()
+    {
+        if (!current_user_can('install_plugins')) {
+            wp_die('Forbidden', 403);
+        }
+        check_admin_referer('wsbase_install_wp_store');
+
+        $status = wsbase_plugin_status_by_dir('wp-store');
+        if (isset($status['installed']) && $status['installed']) {
+            wsbase_admin_set_notice('info', 'WP Store sudah terpasang.');
+            wp_safe_redirect(wsbase_admin_page_url());
+            exit;
+        }
+
+        $release = wsbase_github_repo_get_latest_release('Websweet-Studio/wp-store', 'wp-store');
+        $package = isset($release['asset_url']) && is_string($release['asset_url']) && $release['asset_url'] !== '' ? (string) $release['asset_url'] : (isset($release['zipball_url']) ? (string) $release['zipball_url'] : '');
+        if ($package === '') {
+            wsbase_admin_set_notice('error', 'Gagal mengambil paket instalasi WP Store.');
+            wp_safe_redirect(wsbase_admin_page_url());
+            exit;
+        }
+
+        if (!class_exists('Plugin_Upgrader')) {
+            require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+        }
+        if (!function_exists('wp_clean_plugins_cache')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $skin = new Automatic_Upgrader_Skin();
+        $upgrader = new Plugin_Upgrader($skin);
+        $result = $upgrader->install($package);
+
+        if (is_wp_error($result)) {
+            wsbase_admin_set_notice('error', $result->get_error_message());
+        } elseif ($result === false) {
+            wsbase_admin_set_notice('error', 'Install WP Store gagal.');
+        } else {
+            wsbase_admin_set_notice('success', 'WP Store berhasil diinstall. Silakan aktifkan.');
+        }
+
+        wp_safe_redirect(wsbase_admin_page_url());
+        exit;
+    }
+}
+add_action('admin_post_wsbase_install_wp_store', 'wsbase_admin_post_install_wp_store');
 
 if (!function_exists('wsbase_admin_post_activate_sweetaddons')) {
     function wsbase_admin_post_activate_sweetaddons()
