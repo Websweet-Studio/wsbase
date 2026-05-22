@@ -30,6 +30,12 @@ if (! function_exists('wsbase_scripts')) {
 			$css_version .= '.' . filemtime( $css_path );
 		}
 		wp_enqueue_style('wsbase-styles', get_template_directory_uri() . $theme_styles, array(), $css_version);
+		if ( function_exists( 'shortcode_exists' ) && shortcode_exists( 'wp_store_cart' ) ) {
+			wp_add_inline_style(
+				'wsbase-styles',
+				'@media (max-width: 767.98px){#main-nav .container,#main-nav .container-fluid{display:flex;flex-wrap:wrap;align-items:center}#main-nav .navbar-toggler{order:0;margin-right:.5rem}#main-nav .navbar-brand{order:1}#main-nav .wsbase-navbar-cart{order:2;margin-left:auto}#main-nav .offcanvas,#main-nav .collapse.navbar-collapse{order:3;width:100%}}'
+			);
+		}
 
 		wp_enqueue_script('jquery');
 
