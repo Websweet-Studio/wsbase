@@ -484,6 +484,17 @@ if (!function_exists('wsbase_render_admin_page')) {
             return;
         }
 
+        $refresh = isset($_GET['refresh']) ? sanitize_key((string) $_GET['refresh']) : '';
+        if ($refresh === '1') {
+            check_admin_referer('wsbase_refresh_dashboard');
+            delete_site_transient('wsbase_github_latest_release');
+            delete_site_transient('update_themes');
+            delete_site_transient('wsbase_github_latest_release_' . md5(strtolower('Websweet-Studio/sweetaddons')));
+            wsbase_admin_set_notice('success', 'Data update diperbarui.');
+            wp_safe_redirect(wsbase_admin_page_url());
+            exit;
+        }
+
         $theme = wp_get_theme(get_template());
         $currentVersion = $theme && $theme->exists() ? (string) $theme->get('Version') : '';
 
@@ -510,11 +521,20 @@ if (!function_exists('wsbase_render_admin_page')) {
         $sweetActive = isset($sweetStatus['active']) ? (bool) $sweetStatus['active'] : false;
         $sweetInstalledVer = isset($sweetStatus['version']) ? (string) $sweetStatus['version'] : '';
 
+        $storeStatus = wsbase_plugin_status_by_dir('wp-store');
+        $storeInstalled = isset($storeStatus['installed']) ? (bool) $storeStatus['installed'] : false;
+        $storeActive = isset($storeStatus['active']) ? (bool) $storeStatus['active'] : false;
+        $storeInstalledVer = isset($storeStatus['version']) ? (string) $storeStatus['version'] : '';
+        $storeFile = isset($storeStatus['file']) ? (string) $storeStatus['file'] : '';
+
         $statusTxt = $hasUpdate ? 'Update tersedia' : 'Sudah terbaru';
         $statusBadge = $hasUpdate ? 'wp-store-badge-yellow' : 'wp-store-badge-green';
 
         $sweetBadge = !$sweetInstalled ? 'wp-store-badge-red' : ($sweetActive ? 'wp-store-badge-green' : 'wp-store-badge-yellow');
         $sweetState = !$sweetInstalled ? 'Belum terpasang' : ($sweetActive ? 'Terpasang & aktif' : 'Terpasang (nonaktif)');
+
+        $storeBadge = !$storeInstalled ? 'wp-store-badge-red' : ($storeActive ? 'wp-store-badge-green' : 'wp-store-badge-yellow');
+        $storeState = !$storeInstalled ? 'Belum terpasang' : ($storeActive ? 'Terpasang & aktif' : 'Terpasang (nonaktif)');
 
         echo '<div class="wrap wp-store-wrapper">';
         echo '<div class="wp-store-header wsbase-wps-header">';
@@ -527,6 +547,8 @@ if (!function_exists('wsbase_render_admin_page')) {
             echo '<span class="wp-store-badge wp-store-badge-blue">v' . esc_html($currentVersion) . '</span>';
         }
         echo '<span class="wp-store-badge ' . esc_attr($statusBadge) . '">' . esc_html($statusTxt) . '</span>';
+        $refreshUrl = wp_nonce_url(wsbase_admin_page_url(['refresh' => 1]), 'wsbase_refresh_dashboard');
+        echo '<a class="wp-store-btn wp-store-btn-secondary" href="' . esc_url($refreshUrl) . '">Refresh</a>';
         echo '</div>';
         echo '</div>';
 
@@ -561,59 +583,70 @@ if (!function_exists('wsbase_render_admin_page')) {
         echo '</div>';
 
         echo '<div class="wp-store-card">';
-        echo '<div class="wp-store-card-title">Status Update</div>';
-        echo '<div class="wp-store-card-value">' . esc_html($hasUpdate ? 'Ada' : 'Tidak') . '</div>';
-        echo '<div class="wp-store-card-desc">' . esc_html($statusTxt) . '</div>';
+        echo '<div class="wp-store-card-title">WP Store</div>';
+        echo '<div class="wp-store-card-value">' . esc_html($storeInstalled ? ($storeActive ? 'Aktif' : 'Nonaktif') : '-') . '</div>';
+        $storeDesc = $storeInstalledVer !== '' ? ('Terpasang: ' . $storeInstalledVer) : ($storeInstalled ? 'Terpasang' : 'Belum terpasang');
+        echo '<div class="wp-store-card-desc">' . esc_html($storeDesc) . '</div>';
         echo '</div>';
 
         echo '<div class="wp-store-card">';
         echo '<div class="wp-store-card-title">SweetAddons</div>';
         echo '<div class="wp-store-card-value">' . esc_html($sweetInstalled ? ($sweetActive ? 'Aktif' : 'Nonaktif') : '-') . '</div>';
-        echo '<div class="wp-store-card-desc">' . esc_html($sweetLatest ? ('Terbaru: ' . $sweetLatest) : 'Cek rilis terbaru') . '</div>';
-        echo '</div>';
-
-        echo '</div>';
-
-        echo '<div class="wp-store-dashboard-sections">';
-        echo '<div class="wp-store-box">';
-        echo '<div class="wp-store-box-header">Aksi</div>';
-        echo '<div class="wsbase-wps-actions">';
-        echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
-        echo '<input type="hidden" name="action" value="wsbase_check_updates">';
-        wp_nonce_field('wsbase_check_updates');
-        echo '<button class="wp-store-btn wp-store-btn-secondary" type="submit">Cek Update</button>';
-        echo '</form>';
-
-        $disabled = $hasUpdate ? '' : 'disabled';
-        echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
-        echo '<input type="hidden" name="action" value="wsbase_run_update">';
-        wp_nonce_field('wsbase_run_update');
-        echo '<button class="wp-store-btn wp-store-btn-primary" type="submit" ' . $disabled . '>Update Sekarang</button>';
-        echo '</form>';
-
-        echo '<a class="wp-store-btn wp-store-btn-secondary" href="' . esc_url($releaseUrl) . '" target="_blank" rel="noopener">Lihat Rilis</a>';
-        echo '</div>';
-
-        echo '<div class="wsbase-wps-body">';
-        echo '<div class="wp-store-status">';
-        echo '<div class="wp-store-status-item"><span>Status</span><span class="wp-store-badge ' . esc_attr($statusBadge) . '">' . esc_html($statusTxt) . '</span></div>';
-        echo '<div class="wp-store-status-item"><span>SweetAddons</span><span class="wp-store-badge ' . esc_attr($sweetBadge) . '">' . esc_html($sweetState) . '</span></div>';
-        if ($sweetInstalledVer !== '') {
-            echo '<div class="wp-store-status-item"><span>SweetAddons Terpasang</span><span class="wp-store-badge wp-store-badge-blue">' . esc_html($sweetInstalledVer) . '</span></div>';
-        }
-        if ($publishedAt !== '') {
-            $ts = strtotime($publishedAt);
-            if ($ts) {
-                echo '<div class="wp-store-status-item"><span>Rilis Terbaru</span><span class="wp-store-badge wp-store-badge-blue">' . esc_html(date_i18n('d M Y', $ts)) . '</span></div>';
-            }
+        echo '<div class="wp-store-card-desc">';
+        echo esc_html($sweetLatest ? ('Terbaru: ' . $sweetLatest) : 'Cek rilis terbaru');
+        if ($hasUpdate && $latestVersion !== '') {
+            echo '<br>';
+            echo esc_html('Update WsBase: ' . $latestVersion);
         }
         echo '</div>';
-        echo '</div>';
+        if ($hasUpdate) {
+            $disabled = $hasUpdate ? '' : 'disabled';
+            echo '<div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;">';
+            echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
+            echo '<input type="hidden" name="action" value="wsbase_run_update">';
+            wp_nonce_field('wsbase_run_update');
+            echo '<button class="wp-store-btn wp-store-btn-primary" type="submit" ' . $disabled . '>Update</button>';
+            echo '</form>';
+            echo '<a class="wp-store-btn wp-store-btn-secondary" href="' . esc_url($releaseUrl) . '" target="_blank" rel="noopener">Rilis</a>';
+            echo '</div>';
+        }
         echo '</div>';
 
+        echo '</div>';
+
+        echo '<div style="margin-top:16px;">';
         echo '<div class="wp-store-box">';
         echo '<div class="wp-store-box-header">Rekomendasi Plugin</div>';
         echo '<div class="wsbase-wps-body">';
+        echo '<div style="display:flex;flex-direction:column;gap:16px;">';
+
+        echo '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;">';
+        echo '<div>';
+        echo '<div style="font-weight:700;color:#1d2327;">WP Store</div>';
+        echo '<div class="wp-store-helper">Plugin toko online (catalog, cart, checkout) untuk WsBase.</div>';
+        echo '</div>';
+        echo '<div class="wsbase-wps-badges">';
+        echo '<span class="wp-store-badge ' . esc_attr($storeBadge) . '">' . esc_html($storeState) . '</span>';
+        echo '</div>';
+        echo '</div>';
+
+        echo '<div class="wsbase-wps-actions" style="padding:0;">';
+        if ($storeInstalled && !$storeActive && $storeFile !== '') {
+            echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
+            echo '<input type="hidden" name="action" value="wsbase_activate_wp_store">';
+            wp_nonce_field('wsbase_activate_wp_store');
+            echo '<button class="wp-store-btn wp-store-btn-primary" type="submit">Aktifkan</button>';
+            echo '</form>';
+        } elseif ($storeInstalled && $storeActive) {
+            echo '<button class="wp-store-btn wp-store-btn-secondary" type="button" disabled>Aktif</button>';
+            echo '<a class="wp-store-btn wp-store-btn-secondary" href="' . esc_url(admin_url('admin.php?page=wp-store-settings')) . '">Pengaturan</a>';
+        } else {
+            echo '<a class="wp-store-btn wp-store-btn-secondary" href="' . esc_url(admin_url('plugins.php')) . '">Kelola Plugin</a>';
+        }
+        echo '</div>';
+
+        echo '<div style="height:1px;background:#e5e7eb;"></div>';
+
         echo '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;">';
         echo '<div>';
         echo '<div style="font-weight:700;color:#1d2327;">SweetAddons</div>';
@@ -627,7 +660,7 @@ if (!function_exists('wsbase_render_admin_page')) {
         echo '</div>';
         echo '</div>';
 
-        echo '<div class="wsbase-wps-actions" style="padding:12px 0 0 0;">';
+        echo '<div class="wsbase-wps-actions" style="padding:0;">';
         if (!$sweetInstalled) {
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
             echo '<input type="hidden" name="action" value="wsbase_install_sweetaddons">';
@@ -645,21 +678,48 @@ if (!function_exists('wsbase_render_admin_page')) {
         }
         echo '<a class="wp-store-btn wp-store-btn-secondary" href="' . esc_url($sweetUrl) . '" target="_blank" rel="noopener">Lihat Rilis</a>';
         echo '</div>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
 
-        if ($body !== '') {
-            echo '<div class="wp-store-box" style="margin-top:16px;">';
-            echo '<div class="wp-store-box-header">Catatan Rilis</div>';
-            echo '<div class="wsbase-wps-body wsbase-wps-prose">' . wp_kses_post($body) . '</div>';
-            echo '</div>';
-        }
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
 
         echo '</div>';
         echo '</div>';
     }
 }
+
+if (!function_exists('wsbase_admin_post_activate_wp_store')) {
+    function wsbase_admin_post_activate_wp_store()
+    {
+        if (!current_user_can('activate_plugins')) {
+            wp_die('Forbidden', 403);
+        }
+        check_admin_referer('wsbase_activate_wp_store');
+
+        $status = wsbase_plugin_status_by_dir('wp-store');
+        $file = isset($status['file']) ? (string) $status['file'] : '';
+        if ($file === '') {
+            wsbase_admin_set_notice('error', 'WP Store belum terpasang.');
+            wp_safe_redirect(wsbase_admin_page_url());
+            exit;
+        }
+
+        if (!function_exists('activate_plugin')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+        $result = activate_plugin($file);
+        if (is_wp_error($result)) {
+            wsbase_admin_set_notice('error', $result->get_error_message());
+        } else {
+            wsbase_admin_set_notice('success', 'WP Store berhasil diaktifkan.');
+        }
+
+        wp_safe_redirect(wsbase_admin_page_url());
+        exit;
+    }
+}
+add_action('admin_post_wsbase_activate_wp_store', 'wsbase_admin_post_activate_wp_store');
 
 if (!function_exists('wsbase_admin_post_check_updates')) {
     function wsbase_admin_post_check_updates()

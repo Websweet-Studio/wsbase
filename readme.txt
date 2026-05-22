@@ -3,7 +3,7 @@ Contributors: @aadiityaak
 Requires at least: 4.7
 Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 1.6.1
+Stable tag: 1.6.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,7 @@ and minimalist design, making it both user-friendly and highly customizable.
 
 == Changelog ==
 
-= 1.6.1 =
+= 1.6.11 =
 * Released: 21 May 2026
 - Maintenance release
 

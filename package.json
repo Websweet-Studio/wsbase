@@ -1,6 +1,6 @@
 {
   "name": "wsbase",
-  "version": "1.6.1",
+  "version": "1.6.11",
   "description": "WordPress Theme Starter",
   "main": "index.js",
   "scripts": {
