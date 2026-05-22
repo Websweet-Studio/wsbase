@@ -1,5 +1,5 @@
 /*!
-  * Ws Base  v1.6.0 (https://websweetstudio.com)
+  * Ws Base  v1.6.1 (https://websweetstudio.com)
   * Copyright 2013-2026 websweetstudio.com
   * Licensed under GPL (http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
   */
