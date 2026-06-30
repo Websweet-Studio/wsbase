@@ -15,6 +15,10 @@ and minimalist design, making it both user-friendly and highly customizable.
 
 == Changelog ==
 
+= 1.6.13 =
+* Released: 30 June 2026
+- Fix admin refresh redirect warning
+
 = 1.6.12 =
 * Released: 21 May 2026
 - Maintenance release

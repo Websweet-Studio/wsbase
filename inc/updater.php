@@ -477,22 +477,35 @@ if (!function_exists('wsbase_add_admin_page')) {
 }
 add_action('admin_menu', 'wsbase_add_admin_page');
 
+if (!function_exists('wsbase_handle_admin_refresh')) {
+    function wsbase_handle_admin_refresh()
+    {
+        if (!is_admin() || !current_user_can('manage_options')) {
+            return;
+        }
+
+        $page = isset($_GET['page']) ? sanitize_key((string) $_GET['page']) : '';
+        $refresh = isset($_GET['refresh']) ? sanitize_key((string) $_GET['refresh']) : '';
+        if ($page !== 'wsbase' || $refresh !== '1') {
+            return;
+        }
+
+        check_admin_referer('wsbase_refresh_dashboard');
+        delete_site_transient('wsbase_github_latest_release');
+        delete_site_transient('update_themes');
+        delete_site_transient('wsbase_github_latest_release_' . md5(strtolower('Websweet-Studio/sweetaddons')));
+        wsbase_admin_set_notice('success', 'Data update diperbarui.');
+        wp_safe_redirect(wsbase_admin_page_url());
+        exit;
+    }
+}
+add_action('admin_init', 'wsbase_handle_admin_refresh');
+
 if (!function_exists('wsbase_render_admin_page')) {
     function wsbase_render_admin_page()
     {
         if (!current_user_can('manage_options')) {
             return;
-        }
-
-        $refresh = isset($_GET['refresh']) ? sanitize_key((string) $_GET['refresh']) : '';
-        if ($refresh === '1') {
-            check_admin_referer('wsbase_refresh_dashboard');
-            delete_site_transient('wsbase_github_latest_release');
-            delete_site_transient('update_themes');
-            delete_site_transient('wsbase_github_latest_release_' . md5(strtolower('Websweet-Studio/sweetaddons')));
-            wsbase_admin_set_notice('success', 'Data update diperbarui.');
-            wp_safe_redirect(wsbase_admin_page_url());
-            exit;
         }
 
         $theme = wp_get_theme(get_template());
