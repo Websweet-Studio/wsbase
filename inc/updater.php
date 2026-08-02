@@ -705,6 +705,9 @@ if (!function_exists('wsbase_render_admin_page')) {
         echo '</div>';
         echo '</div>';
 
+        // Plugin dari WSCRM (tarik dari app.websweetstudio.com)
+        wsbase_render_wscrm_plugins_section();
+
         echo '</div>';
         echo '</div>';
     }

@@ -31,6 +31,7 @@ $wsbase_includes = array(
 	'/deprecated.php',                      // Load deprecated functions.
 	'/beaver-builder.php',                  // Load Beaver Builder functions.
 	'/updater.php',
+	'/plugin-wscrm-updater.php',            // Integrasi plugin WSCRM (update & install dari app.websweetstudio.com).
 );
 
 // Load WooCommerce functions if WooCommerce is activated.
